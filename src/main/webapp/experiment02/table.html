@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS基本样式实验</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table th ,table td {
+      padding: 10px;
+      text-align: center;
+    }
+    table tr {
+      border-bottom: 1px solid gray;
+    }
+    tbody tr:nth-child(odd) {
+      background-color: pink;
+    }
+    tbody tr:nth-child(even) {
+      background-color: blue;
+    }
+    .label{
+     border-radius: 3px;
+     padding: 3px 5px;
+     color: white;
+   }
+   .success {
+     background-color: green;
+   }
+   .warning {
+     background-color: orange;
+   }
+   .btn {
+     background-color: darkred;
+     border-radius: 8px;
+     color: whitesmoke;
+     text-decoration: none;
+     padding: 3px 5px;
+     display: inline-block;
+   }
+   .btn:hover {
+     background-color: rgba(30, 13, 45, 0.8);
+   }
+
+  </style>
+</head>
+<body>
+<div class="main">
+  <h3>学生信息</h3>
+  <p>说明：以下为2046级学生名单，共4人，<span class=" label success">成功加载3人</span>。<span class="label warning">警告：列表不包含降级学生</span>。</p>
+  <table>
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>姓名</th>
+      <th>班级</th>
+      <th>Email</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>1</td>
+      <td>郭立新</td>
+      <td>软件工程2046级1班</td>
+      <td>guo@example.com</td>
+      <td><a href="#" class="btn">修改</a> <a href="#" class="btn">删除</a></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>黄英</td>
+      <td>软件工程2046级1班</td>
+      <td>huang@example.com</td>
+      <td><a href="#" class="btn">修改</a> <a href="#" class="btn">删除</a></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>吕惠玲</td>
+      <td>软件工程2046级2班</td>
+      <td>lv@example.com</td>
+      <td><a href="#" class="btn">修改</a> <a href="#" class="btn">删除</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

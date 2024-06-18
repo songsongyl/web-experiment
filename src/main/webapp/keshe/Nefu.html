@@ -38,30 +38,67 @@
 
         }
         .top li {
-            padding: 15px;
-            margin: auto;
+            padding: 10px;
+            /*margin: auto;*/
             color: white;
             font-size: 1.2em;
         }
-        .top li:hover {
+        .top li:not(.search):hover {
             background-color: cornflowerblue;
             color: #f08c00;
         }
-        .teacher, .lab, .major, .work {
-            display: none;
+        .drop {
+            /*display: none;*/
+            display: flex;
             list-style: none;
             /*width: 100px;*/
             /*height: 150px;*/
-            padding: 5px;
-            z-index: 2;
+            /*padding: 5px;*/
+            z-index: 10;
+            top: 80px;
+            /*left: 0;*/
+            position: absolute;
+            flex-direction: column;
+            color: #111111;
         }
         li a {
             display: block;
         }
-        .nav-major:hover + .major {
+        .dropdown:hover .drop{
+            display: block;
+            /*flex-direction: column;*/
+            /*flex-wrap: wrap;*/
+            /*z-index: 10;*/
+            /*position: absolute;*/
+            /*top: 60px;*/
+            /*left: 110px;*/
+        }
+        .header .search {
             display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        .search input {
+            border-radius: 15px;
+            width: 400px;
+            height: 30px;
+            background-color: white;
+            border: 1px solid cornflowerblue;
+            outline: none;
+        }
+        .search input::placeholder {
+            font-size: 14px;
+            color: #999;
+        }
+        .search a {
+            align-self: center;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background-image: url(./img/search.png);
+            background-repeat: no-repeat;
+            left: 390px;
+            z-index: 2;
         }
         .content {
             width: 100%;
@@ -70,9 +107,13 @@
             z-index: 1;
         }
         .content img{
+            position: relative;
             width: 100%;
             height: 100%;
-
+            /*image-rendering: -webkit-optimize-contrast; !* Chrome, Safari, newer Edge *!*/
+            image-rendering: -moz-crisp-edges;         /* Firefox */
+            /*image-rendering:  -o-pixelated;            !* older Opera (15 and earlier) *!*/
+            image-rendering:   crisp-edges;             /* newer browsers */
         }
        .content .toggle {
             position: absolute;
@@ -121,34 +162,41 @@
     <div class="header">
         <img src="./img/04.jpg" title="校徽">
         <ul class="top">
-            <li class="nav-major">专业介绍</li>
-              <ul class="major">
-                <li><a>专业简介</a></li>
-                <li><a>方向简介</a></li>
-                <li><a>分数线</a></li>
+            <li class="nav-major dropdown">专业介绍
+              <ul class="major drop">
+                <li><a href="">专业简介</a></li>
+                <li><a href="">方向简介</a></li>
+                <li><a href="">分数线</a></li>
               </ul>
-            <li class="nav-lab">实验室介绍</li>
-               <ul class="lab">
-                 <li><a>921实验室</a></li>
-                 <li><a>923创新实验室</a></li>
-                 <li><a>925移动开发实验室</a></li>
+            </li>
+            <li class="nav-lab  dropdown">实验室介绍
+               <ul class="lab drop">
+                 <li><a href="">921实验室</a></li>
+                 <li><a href="">923创新实验室</a></li>
+                 <li><a href="">925移动开发实验室</a></li>
                </ul>
-            <li class="nav-teacher">教师队伍</li>
-               <ul class="teacher">
-                  <li><a>教授</a></li>
-                  <li><a>副教授</a></li>
-                  <li><a>讲师</a></li>
+            </li>
+            <li class="nav-teacher  dropdown">教师队伍
+               <ul class="teacher drop">
+                  <li><a href="">教授</a></li>
+                  <li><a href="">副教授</a></li>
+                  <li><a href="">讲师</a></li>
                </ul>
-            <li class="nav-work">就业指南</li>
-              <ul class="work">
-                 <li><a>就业方向</a></li>
-                 <li><a>薪资待遇</a></li>
-                 <li><a>面试指导</a></li>
+            </li>
+            <li class="nav-work  dropdown">就业指南
+              <ul class="work drop">
+                 <li><a href="">就业方向</a></li>
+                 <li><a href="">薪资待遇</a></li>
+                 <li><a href="">面试指导</a></li>
               </ul>
+            </li>
             <li>新闻</li>
 
             <li>公告</li>
-
+            <li class="search">
+                <input type="text" placeholder="请输入关键词">
+                <a href="#"></a>
+            </li>
         </ul>
 
     </div>
@@ -176,6 +224,7 @@
         {url:'./img/02.jpg',title:"红房子"},
         {url:'./img/03.jpg',title:"知园"}]
     $(function (){
+        alert("欢迎来到东北林业大学")
         const img =$(".content img")
         const next =$(".toggle .next")
         const pre = $(".toggle .pre")

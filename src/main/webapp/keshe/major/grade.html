@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 1425px;
+            margin: 0 auto;
+        }
+        .header {
+            width: 100%;
+            background-color: darkcyan;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        .header img {
+            width: 6%;
+            height: auto;
+            vertical-align: middle;
+        }
+        .header .top {
+            list-style: none;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 100px;
+        }
+        .top li {
+            padding: 15px;
+            color: white;
+            font-size: 1.2em;
+            position: relative;
+        }
+        .top li:not(.search):hover {
+            background-color: cornflowerblue;
+            color: #f08c00;
+        }
+        .dropdown {
+            position: relative;
+            display: flex;
+            margin: 5px;
+            top: 2px;
+        }
+        .dropdown .drop {
+            display: none;
+            position: absolute;
+            /*top: 100%;*/
+            /*left: 0;*/
+            background-color: white;
+            /*border: 1px solid #ccc;*/
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .dropdown:hover .drop {
+            display: block;
+        }
+        .header .search {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            padding-right: 20px;
+        }
+        .search input {
+            border-radius: 15px;
+            width: 200px;
+            height: 30px;
+            background-color: white;
+            border: 1px solid cornflowerblue;
+            outline: none;
+            padding: 0 10px;
+        }
+        .search input::placeholder {
+            font-size: 14px;
+            color: #999;
+        }
+        .search a {
+            width: 20px;
+            height: 20px;
+            background-image: url(../img/search.png);
+            background-repeat: no-repeat;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        .content {
+            width: 100%;
+            height: 700px;
+            position: relative;
+            z-index: 1;
+        }
+        .content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .toggle {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+        .toggle button {
+            width: 30px;
+            height: 30px;
+            font-size: 1.5em;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+        }
+        .dot {
+            list-style: none;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+        .dot li {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: pink;
+            opacity: 0.5;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: opacity 0.3s ease;
+        }
+        .dot li.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <img src="../img/04.jpg" title="校徽">
+        <ul class="top">
+            <li class="nav-major dropdown">专业介绍
+                <ul class="drop">
+                    <li><a href="">专业简介</a></li>
+                    <li><a href="">方向简介</a></li>
+                    <li><a href="">分数线</a></li>
+                </ul>
+            </li>
+            <li class="nav-lab dropdown">实验室介绍
+                <ul class="drop">
+                    <li><a href="">921实验室</a></li>
+                    <li><a href="">923创新实验室</a></li>
+                    <li><a href="">925移动开发实验室</a></li>
+                </ul>
+            </li>
+            <li class="nav-teacher dropdown">教师队伍
+                <ul class="drop">
+                    <li><a href="">教授</a></li>
+                    <li><a href="">副教授</a></li>
+                    <li><a href="">讲师</a></li>
+                </ul>
+            </li>
+            <li class="nav-work dropdown">就业指南
+                <ul class="drop">
+                    <li><a href="">就业方向</a></li>
+                    <li><a href="">薪资待遇</a></li>
+                    <li><a href="">面试指导</a></li>
+                </ul>
+            </li>
+            <li>新闻</li>
+            <li>公告</li>
+            <li class="search">
+                <input type="text" placeholder="请输入关键词">
+                <a href="#"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <img src="./img/01.jpg" alt="" title="校门">
+        <ul class="dot">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="toggle">
+            <button class="pre">&lt;</button>
+            <button class="next">&gt;</button>
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+</div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    const data = [
+        {url: '../img/01.jpg', title: "校门"},
+        {url: '../img/02.jpg', title: "红房子"},
+        {url: '../img/03.jpg', title: "知园"}
+    ];
+
+    $(function() {
+        const img = $(".content img");
+        const next = $(".toggle .next");
+        const pre = $(".toggle .pre");
+        let i = 0;
+
+        function changeImage() {
+            img.attr('src', data[i].url);
+            img.attr('title', data[i].title);
+            $(".content .active").removeClass("active");
+            $(`.content .dot li:eq(${i})`).addClass("active");
+        }
+
+        next.click(function() {
+            i++;
+            i = i >= 3 ? 0 : i;
+            changeImage();
+        });
+
+        pre.click(function() {
+            i--;
+            i = i < 0 ? data.length - 1 : i;
+            changeImage();
+        });
+
+        let intervalId = setInterval(function() {
+            next.click();
+        }, 1000);
+
+        $(".content").hover(function() {
+            clearInterval(intervalId);
+        }, function() {
+            intervalId = setInterval(function() {
+                next.click();
+            }, 1000);
+        });
+    });
+</script>
+</body>
+</html>

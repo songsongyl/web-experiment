@@ -17,6 +17,7 @@
             display: flex;
             background-color: #a7e3e3;
             z-index: 1;
+            position: relative;
         }
 
         .header img {
@@ -33,22 +34,30 @@
         }
         .content {
             text-indent: 2em;
-            margin-top: 20px;
+            margin-top: 50px;
             padding: 15px;
         }
 
-        button {
+         button {
             border-radius: 20px;
             outline: none;
             background-color: pink;
             z-index: 2;
             display: block;
             padding: 3px;
-            position: absolute;
-            top:260px;
-            left: 450px;
             color: #f08c00;
+            /*margin: 20px;*/
         }
+         .pre {
+             position: absolute;
+             top:10px;
+             right: 16px;
+         }
+         .root {
+             position: absolute;
+             top:10px;
+             right: 100px;
+         }
         a {
             text-decoration: none;
             /*color: #282727;*/
@@ -71,9 +80,11 @@
             公开发表学术论文120余篇，授权专利9件，主持制定地方标准8项；累计培训菇农近6000人次，培养了一大批食用菌领域土专家；曾荣获黑龙江省模范教师、
             国家林业和草原局 “最美科技推广员”、第十三届全省职工职业道德建设先进个人、哈尔滨市“三八红旗手”等荣誉称号。
         </div>
-
+        <button class="root"><a href="../Nefu.html">返回首页</a></button>
+        <br>
+        <button class="pre"><a href="prolist.html">返回上一级</a></button>
     </div>
-    <button><a href="../Nefu.html">返回首页</a></button>
+
 </div>
 <script>
     

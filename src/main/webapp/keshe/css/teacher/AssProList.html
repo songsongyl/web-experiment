@@ -47,6 +47,7 @@
     h2 {
       text-align: center;
       margin: 5px;
+      display: none;
     }
     button {
       width: 90px;
@@ -67,13 +68,20 @@
 <body>
 <div>
   <h2>副教授列表</h2>
-  <button><a href="../Nefu.html">返回首页</a></button>
+  <button><a href="../../Nefu.html">返回首页</a></button>
   <ul>
-    <li><img src="../img/pro.png" alt=""><a href="./LiliProfessor.html">Pop副教授</a></li>
-    <li><img src="../img/pro2.png" alt=""><a href="./BobProfessor.html">Asia副教授</a></li>
-    <li><img src="../img/pro3.jpg" alt=""><a href="./MaryProfessor.html">Yv副教授</a></li>
+    <li><img src="../../img/pro.png" alt=""><a href="LiliProfessor.html">Pop副教授</a></li>
+    <li><img src="../../img/pro2.png" alt=""><a href="BobProfessor.html">Asia副教授</a></li>
+    <li><img src="../../img/pro3.jpg" alt=""><a href="MaryProfessor.html">Yv副教授</a></li>
   </ul>
 
 </div>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+  $(function (){
+      $("h2").fadeIn(1000)
+      $("h2").animate({top:50})
+  })
+</script>
 </body>
 </html>

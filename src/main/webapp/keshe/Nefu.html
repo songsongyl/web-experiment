@@ -52,31 +52,23 @@
             display: none;
             /*display: flex;*/
             list-style: none;
-            /*width: 100px;*/
-            /*height: 150px;*/
-            /*padding: 5px;*/
             z-index: 10;
-            /*top: 80px;*/
-            /*left: 0;*/
             position: absolute;
             flex-direction: column;
             color: #111111;
+            top: 100%;
+            left: 0;
         }
         li a {
             display: block;
             text-decoration: none;
             font-size: 0.7em;
         }
-
+        .dropdown {
+            position: relative;
+        }
         .dropdown:hover .drop{
             display: block;
-            /*float: right;*/
-            /*flex-direction: column;*/
-            /*flex-wrap: wrap;*/
-            /*z-index: 10;*/
-            /*position: absolute;*/
-            /*top: 60px;*/
-            /*left: 110px;*/
         }
         .header .search {
             display: flex;
@@ -127,15 +119,12 @@
             height: 400px;
             position: relative;
             z-index: 1;
+            /*display: flex;*/
         }
         .content img{
             /*position: relative;*/
             width: 100%;
             height: 100%;
-            /*image-rendering: -webkit-optimize-contrast; !* Chrome, Safari, newer Edge *!*/
-            image-rendering: -moz-crisp-edges;         /* Firefox */
-            /*image-rendering:  -o-pixelated;            !* older Opera (15 and earlier) *!*/
-            image-rendering:   crisp-edges;             /* newer browsers */
         }
        .content .toggle {
             position: absolute;
@@ -156,29 +145,24 @@
        .toggle .next {
            margin-right: 10px;
        }
-        .content .dot {
-            list-style: none;
-            position: absolute;
-            bottom: 40px;
-            left: 700px;
-            display: flex;
-        }
-        .content .dot li {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: chartreuse;
-            opacity: 0.5;
-            cursor: pointer;
-            padding: 5px;
-            margin: 5px;
-        }
-        .dot .active {
-            width: 15px;
-            height: 12px;
-            opacity: 1;
-            background-color: deeppink;
-        }
+        /*.content .dot {*/
+        /*    list-style: none;*/
+        /*    position: absolute;*/
+        /*    bottom: 40px;*/
+        /*    left: 700px;*/
+        /*    display: flex;*/
+        /*}*/
+        /*.content .dot li {*/
+        /*    width: 8px;*/
+        /*    height: 8px;*/
+        /*    border-radius: 50%;*/
+        /*    background-color: chartreuse;*/
+        /*    opacity: 0.5;*/
+        /*    cursor: pointer;*/
+        /*    padding: 5px;*/
+        /*    margin: 5px;*/
+        /*}*/
+
         .footer {
             background-color: antiquewhite;
             width: 100%;
@@ -254,17 +238,17 @@
             </li>
         </ul>
         <div class="top-right">
-            <a href="./css/login/login.jsp"> <input type="button" value="登录"></a>
-            <a href="./css/login/register.jsp"> <input type="button" value="注册"></a>
+            <a href="css/login/Login.jsp"> <input type="button" value="登录"></a>
+            <a href="css/login/Register.jsp"> <input type="button" value="注册"></a>
         </div>
     </div>
     <div class="content">
         <img src="./img/01.jpg" alt="" title="校门">
-        <ul class="dot">
-            <li class="active"></li>
-            <li></li>
-            <li></li>
-        </ul>
+<!--        <ul class="dot">-->
+<!--            <li></li>-->
+<!--            <li></li>-->
+<!--            <li></li>-->
+<!--        </ul>-->
         <div class="toggle">
             <button class="pre">&lt;</button>
             <button class="next">&gt;</button>
@@ -299,15 +283,12 @@
         let changeF = ()=>{
                 img.attr('src', data[i].url);
                 img.attr('title', data[i].title);
-                //这里小圆点没有变化 未解决
-                $(".dot li .active").removeClass("active");
-                $(".dot li").eq(`${i+1}`).addClass("active");
-            // $(".dot li .active").classList.remove("active")
-            // $(`.dot li:nth-child(${i+1})`).classList.add("active")
+
         }
+        // changeF()
         next.click(function (){
             i++
-            i = i >=3 ? 0:i
+            i = i >=data.length ? 0:i
             changeF()
         })
         pre.click(function (){

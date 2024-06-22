@@ -55,9 +55,13 @@
             z-index: 10;
             position: absolute;
             flex-direction: column;
-            color: #111111;
+            color: #f08c00;
             top: 100%;
             left: 0;
+            background-color: royalblue;
+        }
+        .drop a:hover {
+            color: #ffec99;
         }
         li a {
             display: block;
@@ -69,6 +73,7 @@
         }
         .dropdown:hover .drop{
             display: block;
+            color: #f08c00;
         }
         .header .search {
             display: flex;
@@ -118,7 +123,6 @@
             width: 100%;
             height: 400px;
             position: relative;
-            z-index: 1;
             /*display: flex;*/
         }
         .content img{
@@ -213,16 +217,16 @@
             </li>
             <li class="nav-lab  dropdown">实验室介绍
                <ul class="lab drop">
-                 <li><a href="">921实验室</a></li>
-                 <li><a href="">923创新实验室</a></li>
-                 <li><a href="">925移动开发实验室</a></li>
+                 <li><a href="./css/lab/921lab.html">921实验室</a></li>
+                 <li><a href="./css/lab/923lab.html">923创新实验室</a></li>
+                 <li><a href="./css/lab/925lab.html">925移动开发实验室</a></li>
                </ul>
             </li>
             <li class="nav-teacher  dropdown">教师队伍
                <ul class="teacher drop">
-                  <li><a href="">教授</a></li>
-                  <li><a href="">副教授</a></li>
-                  <li><a href="">讲师</a></li>
+                  <li><a href="./css/teacher/Prolist.html">教授</a></li>
+                  <li><a href="./css/teacher/AssProList.html">副教授</a></li>
+                  <li><a href="./css/teacher/Lecturerlist.html">讲师</a></li>
                </ul>
             </li>
             <li class="nav-work  dropdown">就业指南
@@ -275,7 +279,7 @@
         {url:'./img/02.jpg',title:"红房子"},
         {url:'./img/03.jpg',title:"知园"}]
     $(function (){
-        alert("欢迎来到东北林业大学")
+        // alert("欢迎来到东北林业大学")
         const img =$(".content img")
         const next =$(".toggle .next")
         const pre = $(".toggle .pre")

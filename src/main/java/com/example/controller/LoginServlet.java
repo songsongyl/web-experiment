@@ -14,7 +14,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        System.out.println("LoginServlet");
-        req.getRequestDispatcher("/WEB-INF/experiment05/jsp/login.html").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/experiment05/login.html").forward(req,resp);
     }
 
     @Override

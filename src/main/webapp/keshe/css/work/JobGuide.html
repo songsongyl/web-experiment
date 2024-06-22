@@ -10,88 +10,143 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            /*background-image: url("../../img/lab.png");*/
+            /*background-repeat: no-repeat;*/
+            /*background-size: cover;*/
         }
-
+        .container {
+            max-width: 1423px;
+        }
         .header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
+            display: flex;
+            align-items: center;
+            background-color: darkcyan;
+            color: white;
+            width: 100%;
             text-align: center;
         }
-        .nav {
-            list-style: none;
-            display: flex;
+        .header img {
+            width: 6%;
+            color:  darkcyan;
+            vertical-align: center;
+        }
 
+        .root {
+            position: absolute;
+            right: 40px;
+            top: 20px;
+            border-radius: 20px;
+            outline: none;
+            background-color: pink;
+            display: inline-block;
+            width: 70px;
+            height: 30px;
+            padding: 3px;
+        }
+
+        a {
+            text-decoration: none;
+            display: block;
+            color: #111111;
+        }
+        .nav {
+            background-color: #184b4b;
+            color: white;
+            /*text-align: center;*/
+            padding: 10px ;
+            display: flex;
+            list-style: none;
+        }
+        li {
+            margin: auto;
         }
         .nav a {
-            color: #fff;
+            color: white;
             text-decoration: none;
-            padding: 30px;
-            margin-left: 180px;
+            padding: 0 10px;
+            display: block;
+
+        }
+        .nav a:hover {
+            background-color: darkcyan;
         }
 
-        .main {
-            padding: 20px;
-            margin-bottom: 30px;
+        p{
+            text-indent: 2em;
+        }
+        h1 {
+            text-align: center;
+            margin: auto;
         }
 
-
-        .job-description {
-            margin-top: 10px;
+        .footer {
+            background-color: darkcyan;
+            color: white;
+            text-align: center;
+            padding: 2px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1;
         }
-
-
     </style>
 </head>
 <body>
-<div class=" header">
-    <h1>就业指南</h1>
-    <ul class="nav">
-        <li><a href="#intro">介绍</a></li>
-        <li><a href="#jobs">热门职位</a></li>
-        <li><a href="#resources">资源链接</a></li>
-        <li><a href="#contact">联系我们</a></li>
-    </ul>
-</div>
-<div class="main">
-    <div id="intro">
-        <!-- 介绍内容 -->
-
+<div class="container">
+    <div class=" header">
+        <img src="../../img/04.jpg" title="校徽">
+        <h1>就业指南</h1>
+        <button class="root"><a href="../../Nefu.html">返回首页</a></button>
     </div>
-    <div id="jobs">
-        <h2>热门职位</h2>
-        <br>
-        <div class="job">
-            <h3 class="job-title">Web开发工程师</h3>
-            <p class="job-description">负责网站前后端开发，熟练使用HTML/CSS/JavaScript和常用框架。</p>
-            <a href="job-details.html" class="job-link">查看详细</a>
-        </div>
-        <div class="job">
-            <h3 class="job-title">产品经理</h3>
-            <p class="job-description" style="display: none;">负责产品的规划、设计和推广，具备良好的沟通和团队协作能力。</p>
-            <a href="job-details.html" class="job-link">查看详细</a>
-        </div>
-    </div>
-    <div id="resources">
-        <h2>资源链接</h2>
-        <ul>
-            <li><a href="recruitment-website.com" target="_blank">招聘网站1</a></li>
-            <li><a href="online-courses.com" target="_blank">在线课程平台</a></li>
-            <li><a href="resume-templates.com" target="_blank">简历模板下载</a></li>
-            <!-- 更多资源链接... -->
+        <ul class="nav">
+            <li><a href="#intro">介绍</a></li>
+            <li><a href="#jobs">热门职位</a></li>
+            <li><a href="#resources">资源链接</a></li>
+            <li><a href="#contact">联系我们</a></li>
         </ul>
-        <!-- 资源链接列表 -->
-    </div>
-</div>
-<div class="footer" >
-    <p>如果您有任何疑问或需要进一步的帮助，请通过以下方式联系我们：</p>
-    <div class="address" >
-        电子邮件: <a href="mailto:info@careerguide.com">info@careerguide.com</a><br>
-        电话: 123-456-7890<br>
-        地址: 示例街道123号, 示例城市
-    </div>
 
+    <div class="content">
+        <div id="intro">
+            <!-- 介绍内容 -->
+
+        </div>
+        <div id="jobs">
+            <h2>热门职位</h2>
+            <br>
+            <div class="job">
+                <h3 class="job-title">Web开发工程师</h3>
+                <p class="job-description">负责网站前后端开发，熟练使用HTML/CSS/JavaScript和常用框架。</p>
+                <a href="" class="job-link">查看详细</a>
+            </div>
+            <div class="job">
+                <h3 class="job-title">产品经理</h3>
+                <p class="job-description" style="display: none;">负责产品的规划、设计和推广，具备良好的沟通和团队协作能力。</p>
+                <a href="" class="job-link">查看详细</a>
+            </div>
+        </div>
+        <div id="resources">
+            <h2>资源链接</h2>
+            <ul>
+                <li><a href="" target="_blank">招聘网站1</a></li>
+                <li><a href="" target="_blank">在线课程平台</a></li>
+                <li><a href="" target="_blank">简历模板下载</a></li>
+                <!-- 更多资源链接... -->
+            </ul>
+            <!-- 资源链接列表 -->
+        </div>
+    </div>
+    <div class="footer" >
+        <p>如果您有任何疑问或需要进一步的帮助，请通过以下方式联系我们：</p>
+        <div class="address" >
+            电子邮件: <a href="mailto:info@careerguide.com">info@careerguide.com</a><br>
+            电话: 123-456-7890<br>
+            地址: 示例街道123号, 示例城市
+        </div>
+
+    </div>
 </div>
+
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
 

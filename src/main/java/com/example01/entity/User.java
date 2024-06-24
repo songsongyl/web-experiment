@@ -1,4 +1,4 @@
-package com.example.entity;
+package com.example01.entity;
 
 public class User {
     private String name;

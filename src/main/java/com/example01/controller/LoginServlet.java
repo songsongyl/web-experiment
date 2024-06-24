@@ -1,6 +1,6 @@
-package com.example.controller;
+package com.example01.controller;
 
-import com.example.entity.User;
+import com.example01.entity.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

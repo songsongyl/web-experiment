@@ -1,6 +1,6 @@
-package com.example.filter;
+package com.example01.filter;
 
-import com.example.entity.User;
+import com.example01.entity.User;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebFilter;

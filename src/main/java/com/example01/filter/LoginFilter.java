@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebFilter("/*")
+//@WebFilter("/*")
 public class LoginFilter extends HttpFilter {
     private List<String> excludes = List.of("/login");
 

@@ -20,7 +20,7 @@
         <c:forEach items="${teachers}" var="t" varStatus="s">
             <tr>
                 <td>${s.count}</td>
-                //链接地址中传参
+<%--                链接地址中传参--%>
                 <td><a href="updateteacher?tid=${t.id}">${t.name}</a></td>
                 <td>${t.insertDate}</td>
             </tr>

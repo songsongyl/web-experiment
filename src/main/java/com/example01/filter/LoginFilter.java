@@ -11,9 +11,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-//@WebFilter("/*")
+@WebFilter("/filter/*")
 public class LoginFilter extends HttpFilter {
-    private List<String> excludes = List.of("/login");
+    private List<String> excludes = List.of("/filter/login");
 
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
@@ -27,7 +27,7 @@ public class LoginFilter extends HttpFilter {
         if (user != null) {
             chain.doFilter(req, res);
         } else {
-            res.sendRedirect(req.getContextPath() + "/login");
+            res.sendRedirect(req.getContextPath() + "/filter/login");
         }
     }
 }

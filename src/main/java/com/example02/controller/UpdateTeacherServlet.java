@@ -30,5 +30,6 @@ public class UpdateTeacherServlet extends HttpServlet {
         logger.info("姓名：" + req.getParameter("tn"));
         logger.info("职称ID：" + req.getParameter("titleid"));
         logger.info("课程ID：" + Arrays.toString(req.getParameterValues("courseids")));
+        //字符串数组转成字符串
     }
 }

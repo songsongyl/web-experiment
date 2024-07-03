@@ -58,7 +58,7 @@
      $("#register :input").prop("disabled",true)
      $("#legal").click(function (){
        let agree = !$(this).prop("checked")
-       $("#register :input").not("button[type='submit']").prop("disabled",agree)
+       $("#register :input").not("button[type=submit]").prop("disabled",agree)
      })
      let userName = false
      let courses = false

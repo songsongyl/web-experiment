@@ -6,16 +6,26 @@ public class User {
     private String password;
     private String phone;
     private Admin.Sex sex;
+    private int age;
     public enum Sex {
         FEMALE,MALE
     }
 
-    public User(Title id, String name, String password, String phone, Admin.Sex sex) {
+    public User(Title id, String name, String password, String phone, Admin.Sex sex, int age) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.phone = phone;
         this.sex = sex;
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Admin.Sex getSex() {

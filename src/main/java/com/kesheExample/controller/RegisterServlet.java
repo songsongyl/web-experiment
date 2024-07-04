@@ -54,4 +54,9 @@ public class RegisterServlet extends HttpServlet {
       }
       resp.sendRedirect(req.getContextPath()+"/nefu/register");
     }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/WEB-INF/keshe/register.jsp");
+    }
 }

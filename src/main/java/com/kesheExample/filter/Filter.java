@@ -1,6 +1,7 @@
 package com.kesheExample.filter;
 
 import com.example01.entity.User;
+import com.kesheExample.entity.Admin;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebFilter;
@@ -23,10 +24,11 @@ public class Filter extends HttpFilter {
             }
         }
         User user = (User) req.getSession().getAttribute("user");
-        if (user != null) {
+        Admin admin = (Admin) req.getSession().getAttribute("admin");
+        if (user != null || admin != null) {
             chain.doFilter(req, res);
         } else {
-            res.sendRedirect(req.getContextPath() + "/filter/login");
+            res.sendRedirect(req.getContextPath() + "/nefu/login");
         }
     }
 }

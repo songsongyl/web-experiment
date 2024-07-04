@@ -23,7 +23,13 @@
 <body>
 <div id="login">
     <form method="post" action="nefu/login">
-        <label>用户名：<input type="text" name="userName"></label>
+        身份：
+        <select name="identity">
+            <option value=""></option>
+            <option value="ADMIN">管理员</option>
+            <option value="USER">普通用户</option>
+        </select>
+        <label>用户名：<input type="text" name="username"></label>
         <br>
         <label>密码：<input type="password" name="password"></label>
         <br>

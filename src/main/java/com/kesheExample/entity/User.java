@@ -10,6 +10,9 @@ public class User {
     public enum Sex {
         FEMALE,MALE
     }
+    public enum Title {
+        ADMIN,USER
+    }
 
     public User(Title id, String name, String password, String phone, Admin.Sex sex, int age) {
         this.id = id;

@@ -23,7 +23,7 @@
 <body>
 <div id="register">
     <h3>欢迎注册</h3>
-    <form action="">
+    <form action="nefu/register">
         请选择身份:
         <select name="identity" id="">
             <option value="User">用户</option>

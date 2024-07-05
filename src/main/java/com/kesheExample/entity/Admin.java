@@ -22,7 +22,16 @@ public class Admin {
         this.sex = sex;
         this.age = age;
     }
-
+    public static Sex getSexFromString(String sexStr) {
+        switch (sexStr.toUpperCase()) {
+            case "MALE":
+                return Sex.MALE;
+            case "FEMALE":
+                return Sex.FEMALE;
+            default:
+                throw new IllegalArgumentException("Invalid sex: " + sexStr);
+        }
+    }
     public int getAge() {
         return age;
     }

@@ -22,7 +22,16 @@ public class User {
         this.sex = sex;
         this.age = age;
     }
-
+    public static User.Sex getSexFromString(String sexStr) {
+        switch (sexStr.toUpperCase()) {
+            case "MALE":
+                return User.Sex.MALE;
+            case "FEMALE":
+                return User.Sex.FEMALE;
+            default:
+                throw new IllegalArgumentException("Invalid sex: " + sexStr);
+        }
+    }
     public int getAge() {
         return age;
     }

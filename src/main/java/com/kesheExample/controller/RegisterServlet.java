@@ -22,37 +22,25 @@ public class RegisterServlet extends HttpServlet {
       String phone = req.getParameter("phone");
       String sex = req.getParameter("sex");
       int age = Integer.parseInt(req.getParameter("age"));
-        String sql = "insert into ? values(?,?,?,?,?,?)";
-      if(id.equals("USER")){
-          try(Connection con = DataSourceUtils.getConnection();
+      String tableName = "User1";
+        if(id.equals("admin")){
+            tableName = "admin";
+        }
+        String sql = "INSERT INTO " + tableName + "(id, name, password, phone, sex, age)VALUES (?, ?, ?,?,?, ?)";
+        try(Connection con = DataSourceUtils.getConnection();
               PreparedStatement ps = con.prepareStatement(sql)){
-              ps.setString(1,"User1");
-              ps.setString(2,id);
-              ps.setString(3,name);
-              ps.setString(4,password);
-              ps.setString(5,phone);
-              ps.setString(6,sex);
-              ps.setInt(7,age);
+              ps.setString(1,id);
+              ps.setString(2,name);
+              ps.setString(3,password);
+              ps.setString(4,phone);
+              ps.setString(5,sex);
+              ps.setInt(6,age);
               ps.executeUpdate();
           } catch (SQLException e) {
               throw new RuntimeException(e);
           }
-      }else{
-          try(Connection con = DataSourceUtils.getConnection();
-              PreparedStatement ps = con.prepareStatement(sql)){
-              ps.setString(1,"admin");
-              ps.setString(2,id);
-              ps.setString(3,name);
-              ps.setString(4,password);
-              ps.setString(5,phone);
-              ps.setString(6,sex);
-              ps.setInt(7,age);
-              ps.executeUpdate();
-          } catch (SQLException e) {
-              throw new RuntimeException(e);
-          }
-      }
-      resp.sendRedirect(req.getContextPath()+"/nefu/register");
+
+      resp.sendRedirect(req.getContextPath()+"/nefu/login");
     }
 
     @Override

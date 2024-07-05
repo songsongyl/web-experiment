@@ -17,6 +17,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.kesheExample.entity.Admin.getSexFromString;
+
 @WebServlet("/nefu/login")
 public class LoginServlet extends HttpServlet {
     @Override
@@ -29,34 +31,35 @@ public class LoginServlet extends HttpServlet {
         String name = req.getParameter("username");
         String psw = req.getParameter("password");
         String id = req.getParameter("identity");
-        String sql = "select name,password from ?";
-        List<User> users = new ArrayList<>();
-        List<Admin> admins = new ArrayList<>();
-        String url = "/nefu/login";
+        String tableName = "User1"; // 假设根据某些逻辑决定使用哪个表
+        if(id.equals("admin")){
+            tableName = "admin";
+        }
+        String sql = "SELECT * FROM " + tableName + " WHERE name = ? AND password = ?";
+//        List<User> users = new ArrayList<>();
+//        List<Admin> admins = new ArrayList<>();
+        String url ;
         try (Connection con = DataSourceUtils.getConnection();
              PreparedStatement ps = con.prepareStatement(sql);) {
-            ps.setString(1, id);
+            ps.setString(1, name);
+            ps.setString(2,psw);
             try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()){
-                    if(id.equals("ADMIN")){
-                        Admin admin = new Admin(rs.getObject("id", Admin.Title.class),rs.getString("name"),rs.getString("password"),rs.getString("phone"),rs.getObject("sex", Admin.Sex.class),rs.getInt("age"));
-                        admins.add(admin);
-                        for (Admin admin1:admins){
-                            if(admin1.getName().equals(name)&&admin1.getPassword().equals(psw)){
-                                req.getSession().setAttribute("admin",admin1);
-                                url = "/nefu";
-                            }
-                        }
+                if (rs.next()){
+                    String titleStr = rs.getString("title"); // 假设数据库中存储的是枚举名称的字符串表示
+                    Admin.Title title = Admin.Title.valueOf(titleStr.toUpperCase());
+                    User.Title title1 = User.Title.valueOf(titleStr.toUpperCase());
+                    String sexStr = rs.getString("sex"); // 假设数据库中存储的是枚举名称的字符串表示
+                    Admin.Sex sex = getSexFromString(sexStr); // 自定义方法转换
+                    if (id.equals("admin")){
+                        Admin admin = new Admin(title,rs.getString("name"),rs.getString("password"),rs.getString("phone"),sex,rs.getInt("age"));
+                        req.getSession().setAttribute("admin", admin);
                     }else{
-                        User user = new User(rs.getObject("id", User.Title.class),rs.getString("name"),rs.getString("password"),rs.getString("phone"),rs.getObject("sex", Admin.Sex.class),rs.getInt("age"));
-                        users.add(user);
-                        for(User user1:users){
-                            if(user1.getName().equals(name)&&user1.getPassword().equals(psw)){
-                               req.getSession().setAttribute("user",user1);
-                                url = "/nefu";
-                            }
-                        }
+                        User user = new User(title1,rs.getString("name"),rs.getString("password"),rs.getString("phone"),sex,rs.getInt("age"));
+                        req.getSession().setAttribute("user", user);
                     }
+                    url = "/nefu";
+                }else{
+                    url = "/nefu/login";
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);

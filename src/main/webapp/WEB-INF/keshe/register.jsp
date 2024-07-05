@@ -29,6 +29,7 @@
             <option value="User">用户</option>
             <option value="Admin">管理员</option>
         </select>
+        <br>
         <label >用户名：<input type="text" name="username" placeholder="请输入用户名"></label><br>
         <label >密码：<input type="password" name="password" id="password" placeholder="请输入密码"></label><br>
         <label >密码：<input type="password" name="confirm_password" placeholder="请再次输入密码"></label><br>
@@ -37,6 +38,7 @@
         <input type="radio" name="sex" >男
        <input type="radio" name="sex" id="sex">女
         <label for="sex" generated="true" class="error"></label>
+        <br>
         <label ><input type="text" name="age">年龄</label>
     </form>
 </div>

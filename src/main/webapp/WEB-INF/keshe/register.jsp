@@ -40,16 +40,18 @@
             <option value="ADMIN">管理员</option>
         </select>
         <br>
-        <label >用户名：<input type="text" name="username" placeholder="请输入用户名"></label><br>
-        <label >密码：<input type="password" name="password" id="password" placeholder="请输入密码"></label><br>
+        <label >用户名：<input type="text" name="username" placeholder="用户名长度不能少于4个字符"></label><br>
+        <label >密码：<input type="password" name="password" id="password" placeholder="密码6-9个字符"></label><br>
         <label >密码：<input type="password" name="confirm_password" id="confirm_password" placeholder="请再次输入密码"></label><br>
-        <label >手机号：<input type="text" name="phone" placeholder="请输入手机号"></label><br>
+        <label >手机号：<input type="text" name="phone" placeholder="长度为11个字符且必须是数字"></label><br>
         性别：
-        <input type="radio" name="sex" >男
+        <label>
+            <input type="radio" name="sex" >男
+        </label>
        <input type="radio" name="sex" id="sex">女
         <label for="sex" generated="true" class="error"></label>
         <br>
-        <label ><input type="text" name="age">年龄</label>
+        <label ><input type="text" name="age">年龄在18-28之间</label>
         <br>
         <button type="submit">注册</button>
     </form>

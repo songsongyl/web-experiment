@@ -4,7 +4,8 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/experiment06/listteachers.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/experiment06" />
-        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/keshe/nefu.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/keshe" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/keshe/nefu.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/keshe/register.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/keshe" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/experiment03/layout.html" value="file://$PROJECT_DIR$/src/main/webapp/experiment03" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/experiment03/layoutTest.html" value="file://$PROJECT_DIR$/src/main/webapp/experiment03" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/experiment04/jQuery.html" value="file://$PROJECT_DIR$/src/main/webapp/experiment04" />

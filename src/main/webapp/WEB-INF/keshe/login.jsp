@@ -29,9 +29,9 @@
     <form method="post" action="/web_experiment_war_exploded/nefu/login">
         身份：
         <select name="identity">
-            <option value=""></option>
+<%--            <option value=""></option>--%>
             <option value="ADMIN">管理员</option>
-            <option value="USER">普通用户</option>
+            <option value="USER" selected>普通用户</option>
         </select>
         <br>
         <label>用户名：<input type="text" name="username"></label>

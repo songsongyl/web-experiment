@@ -5,6 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <c:url var="base" value="/"/>
+    <base href="${base}">
     <style>
         *{
             padding: 0;
@@ -96,31 +98,33 @@
             font-size: 14px;
             color: #999;
         }
-        .search a {
+
+        .search img {
             align-self: center;
             width: 20px;
             height: 15px;
             position: absolute;
-            background-image: url(/img/search.png);
-            background-repeat: no-repeat;
-            left: 440px;
+            left: 430px;
             z-index: 2;
         }
 
-        /*.top-right {*/
-        /*    margin-left: 100px;*/
-        /*}*/
-        /*.top-right input{*/
-        /*    width: 50px;*/
-        /*    height: 30px;*/
-        /*    border-radius: 10px;*/
-        /*    background-color: palevioletred;*/
-        /*    margin-top: 15px;*/
-        /*    !*outline: none;*!*/
-        /*    border: none;*/
-        /*    padding: 5px;*/
-        /*    margin-right: 10px;*/
-        /*}*/
+        .top-right {
+            margin-left: 100px;
+        }
+        .top-right input{
+            width: 50px;
+            height: 30px;
+            border-radius: 10px;
+            background-color: palevioletred;
+            margin-top: 15px;
+            /*outline: none;*/
+            border: none;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        .top-right input.toggle_account{
+            width: 70px;
+        }
         .content {
             width: 100%;
             height: 400px;
@@ -132,24 +136,24 @@
             width: 100%;
             height: 100%;
         }
-        .content .toggle {
+        .content .toggle .pre{
             position: absolute;
             top: 200px;
             opacity: 0.7;
-            right: 5px;
-
+            /*right: 5px;*/
+            left: 5px;
+            margin-right: 1350px;
+        }
+        .content .toggle .next {
+            position: absolute;
+            top: 200px;
+            opacity: 0.7;
+            right: 10px;
+            /*margin-right: 10px;*/
         }
         .toggle button {
             width: 20px;
             height: 20px;
-        }
-        .toggle .pre {
-            left: 5px;
-            margin-right: 1350px;
-
-        }
-        .toggle .next {
-            margin-right: 10px;
         }
         /*.content .dot {*/
         /*    list-style: none;*/
@@ -169,7 +173,7 @@
         /*    margin: 5px;*/
         /*}*/
 
-        .footer {
+        .foot {
             background-color: antiquewhite;
             width: 100%;
             height: 300px;
@@ -188,19 +192,15 @@
             text-align: center;
             padding: 5px;
         }
-
-
-        .col-md-1 {width: 8.33%;}
-        .col-md-2 {width: 16.67%;}
-        .col-md-3 {width: 25%;}
-        .col-md-4 {width: 33.33%;}
-        .col-md-5 {width: 41.67%;}
+        #footer {
+            background-color: darkcyan;
+            color: white;
+            text-align: center;
+            padding: 2px 0;
+            position: fixed;
+            bottom: 0;
+        }
         .col-md-6 {width: 50%;}
-        .col-md-7 {width: 58.33%;}
-        .col-md-8 {width: 66.67%;}
-        .col-md-9 {width: 75%;}
-        .col-md-10 {width: 83.33%;}
-        .col-md-11 {width: 91.67%;}
         .col-md-12 {width: 100%;}
     </style>
 </head>
@@ -208,7 +208,8 @@
 <div class="container">
 
     <div class="header">
-        <img src="/img/04.jpg" title="校徽">
+        <img src="img/04.jpg" title="校徽" alt="未成功加载">
+<%--        啊啊啊啊，改了好久，最终幡然醒悟，应该加个部署路径--%>
         <ul class="top">
             <li class="nav-major dropdown">专业介绍
                 <ul class="major drop">
@@ -219,16 +220,16 @@
             </li>
             <li class="nav-lab  dropdown">实验室介绍
                 <ul class="lab drop">
-                    <li><a href="/html/lab/921lab.html">921实验室</a></li>
-                    <li><a href="/html/lab/923lab.html">923创新实验室</a></li>
-                    <li><a href="/html/lab/925lab.html">925移动开发实验室</a></li>
+                    <li><a href="html/lab/921lab.html">921实验室</a></li>
+                    <li><a href="html/lab/923lab.html">923创新实验室</a></li>
+                    <li><a href="html/lab/925lab.html">925移动开发实验室</a></li>
                 </ul>
             </li>
             <li class="nav-teacher  dropdown">教师队伍
                 <ul class="teacher drop">
-                    <li><a href="../../html/teacher/prolist.html">教授</a></li>
-                    <li><a href="/html/teacher/assProList.html">副教授</a></li>
-                    <li><a href="/html/teacher/lecturerlist.html">讲师</a></li>
+                    <li><a href="html/teacher/prolist.html">教授</a></li>
+                    <li><a href="html/teacher/assProList.html">副教授</a></li>
+                    <li><a href="teacher/lecturerlist.html">讲师</a></li>
                 </ul>
             </li>
             <li class="nav-work  dropdown">就业指南
@@ -240,16 +241,16 @@
             </li>
             <li class="search">
                 <input type="text" placeholder="请输入关键词">
-                <a href="#"></a>
+                <img src="img/search.png" alt="">
             </li>
         </ul>
-<%--        <div class="top-right">--%>
-<%--            <a href="nefu/login"> <input type="button" value="登录"></a>--%>
-<%--            <a href="nefu/register"> <input type="button" value="注册"></a>--%>
-<%--        </div>--%>
+        <div class="top-right">
+            <a href="nefu/login"> <input type="button" class="toggle_account" value="切换账号"></a>
+            <a href="nefu/register"> <input type="button" value="注册"></a>
+        </div>
     </div>
     <div class="content">
-        <img src="/img/01.jpg" alt="" title="校门">
+        <img src="img/01.jpg" alt="" title="校门">
         <!--        <ul class="dot">-->
         <!--            <li></li>-->
         <!--            <li></li>-->
@@ -260,7 +261,7 @@
             <button class="next">&gt;</button>
         </div>
     </div>
-    <div class="footer col-md-12">
+    <div class="foot col-md-12">
         <div class="news col-md-6">
             <h3>每日新闻</h3>
             <ul>
@@ -272,13 +273,17 @@
 
         </div>
     </div>
+    <div id="footer" class="col-md-12">
+<%--        <%@include file="footer.jsp "%>--%>
+    <p>&copy; 2024 东北林业大学 All Rights Reserved.</p>
+    </div>
 </div>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
     const data = [
-        {url: '/img/01.jpg',title:"校门"},
-        {url:'/img/02.jpg',title:"红房子"},
-        {url:'/img/03.jpg',title:"知园"}]
+        {url: 'img/01.jpg',title:"校门"},
+        {url:'img/02.jpg',title:"红房子"},
+        {url:'img/03.jpg',title:"知园"}]
     $(function (){
         // alert("欢迎来到东北林业大学")
         const img =$(".content img")

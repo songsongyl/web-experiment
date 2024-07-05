@@ -18,6 +18,7 @@ public class Filter extends HttpFilter {
     private List<String> excludes = List.of("/nefu/login","/nefu/register");
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
+
         for (String e : excludes) {
             if (e.equals(req.getServletPath())) {
                 chain.doFilter(req, res);

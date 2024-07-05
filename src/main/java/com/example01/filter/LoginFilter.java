@@ -20,6 +20,7 @@ public class LoginFilter extends HttpFilter {
         for (String e : excludes) {
             if (e.equals(req.getServletPath())) {
                 chain.doFilter(req, res);
+//                在这里放过去了其他的逻辑判断也就不执行了
                 return;
             }
         }

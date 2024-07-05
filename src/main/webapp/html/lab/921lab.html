@@ -19,32 +19,114 @@
             max-width: 1423px;
         }
         .header {
-            display: flex;
-            align-items: center;
-            background-color: darkcyan;
-            color: white;
+            /*border: 1px solid red;*/
             width: 100%;
-            text-align: center;
+            background-color: darkcyan;
+            /*overflow: hidden;*/
+            position: relative;
+            z-index: 1;
+            display: flex;
+            height: 70px;
         }
         .header img {
+            /*border: 1px solid red;*/
             width: 6%;
+            height: 100%;
             color:  darkcyan;
-            vertical-align: center;
+            /*display: flex;*/
+            /*filter: hue-rotate(120deg);*/
         }
-        .button {
-            border-radius: 20px;
-            outline: none;
-            background-color: pink;
-            display: inline-block;
-            width: 70px;
-            height: 30px;
-            padding: 3px;
-            /*margin-bottom: 50px;*/
+        .header .top {
+            list-style: none;
+            display: flex;
+            /*position: absolute;*/
+            /*top:12px;*/
+            /*left: 100px;*/
+
         }
-        .root {
+        .top li {
+            padding: 10px;
+            /*margin: auto;*/
+            color: white;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .top li:not(.search):hover {
+            background-color: cornflowerblue;
+            color: #f08c00;
+        }
+        .drop {
+            display: none;
+            /*display: flex;*/
+            list-style: none;
+            z-index: 10;
             position: absolute;
-            right: 40px;
-            top: 20px;
+            flex-direction: column;
+            color: #f08c00;
+            top: 100%;
+            left: 0;
+            background-color: royalblue;
+        }
+        .drop a:hover {
+            color: #ffec99;
+        }
+        li a {
+            display: block;
+            text-decoration: none;
+            font-size: 0.7em;
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown:hover .drop{
+            display: block;
+            color: #f08c00;
+        }
+        .header .search {
+            display: flex;
+            position: relative;
+            z-index: 1;
+            margin-left: 80px;
+            margin-top: 8px;
+        }
+        .search input {
+            border-radius: 15px;
+            width: 450px;
+            height: 30px;
+            background-color: white;
+            border: 1px solid cornflowerblue;
+            outline: none;
+        }
+        .search input::placeholder {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .search img {
+            align-self: center;
+            width: 20px;
+            height: 15px;
+            position: absolute;
+            left: 430px;
+            z-index: 2;
+        }
+
+        .top-right {
+            margin-left: 30px;
+        }
+        .top-right input{
+            width: 50px;
+            height: 30px;
+            border-radius: 10px;
+            background-color: palevioletred;
+            margin-top: 15px;
+            /*outline: none;*/
+            border: none;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        .top-right input.toggle_account{
+            width: 70px;
         }
         .img {
             width: 100px;
@@ -104,8 +186,6 @@
             padding: 2px 0;
             position: fixed;
             bottom: 0;
-            width: 100%;
-            z-index: 1;
         }
 
 
@@ -127,9 +207,46 @@
 <body>
 <div class="container">
     <div class="header" >
-        <img src=/img/04.jpg" title="校徽">
-        <h1>欢迎来到我们的实验室</h1>
-        <button class="root button"><a href="nefu">返回首页</a></button>
+        <img src="../../img/04.jpg" title="校徽" alt="未成功加载">
+        <ul class="top">
+            <li class="nav-major dropdown">专业介绍
+                <ul class="major drop">
+                    <li><a href="">专业简介</a></li>
+                    <li><a href="">方向简介</a></li>
+                    <li><a href="">分数线</a></li>
+                </ul>
+            </li>
+            <li class="nav-lab  dropdown">实验室介绍
+                <ul class="lab drop">
+                    <li><a href="921lab.html">921实验室</a></li>
+                    <li><a href="923lab.html">923创新实验室</a></li>
+                    <li><a href="925lab.html">925移动开发实验室</a></li>
+                </ul>
+            </li>
+            <li class="nav-teacher  dropdown">教师队伍
+                <ul class="teacher drop">
+                    <li><a href="../teacher/prolist.html">教授</a></li>
+                    <li><a href="../teacher/assProList.html">副教授</a></li>
+                    <li><a href="../teacher/lecturerlist.html">讲师</a></li>
+                </ul>
+            </li>
+            <li class="nav-work  dropdown">就业指南
+                <ul class="work drop">
+                    <li><a href="">就业方向</a></li>
+                    <li><a href="">薪资待遇</a></li>
+                    <li><a href="">面试指导</a></li>
+                </ul>
+            </li>
+            <li class="search">
+                <input type="text" placeholder="请输入关键词">
+                <img src="../../img/search.png" alt="">
+            </li>
+        </ul>
+        <div class="top-right">
+            <a href="/WEB-INF/keshe/login"> <input type="button" class="toggle_account" value="切换账号"></a>
+            <a href="/WEB-INF/keshe/register"> <input type="button" value="注册"></a>
+        </div>
+
     </div>
     <ul class=" nav">
         <li><a href="#about">关于我们</a></li>
@@ -142,7 +259,7 @@
         <h2>关于我们</h2>
         <p>我们的实验室专注于前沿科学技术的研究和创新，致力于推动科学进步和社会发展。</p>
         <button class=" button img">点击显示图片</button>
-        <img src="/img/lab1.jpg" alt="">
+        <img src="../../img/lab1.jpg" alt="">
     </div>
 
     <div id="research ">
@@ -152,16 +269,16 @@
     <div id="team ">
         <h2>团队成员</h2>
         <p class="col-md-12">我们的团队由一群充满激情和创造力的科学家、工程师和研究人员组成，他们在各自的领域取得了丰硕的成果。</p>
-        <img class="col-md-2" src="/img/pro2.png" alt="">
-        <img class="col-md-2" src="/img/pro.png" alt="">
-        <img class="col-md-2" src="/img/pro2.png" alt="">
+        <img class="col-md-2" src="../../img/pro2.png" alt="">
+        <img class="col-md-2" src="../../img/pro.png" alt="">
+        <img class="col-md-2" src="../../img/pro2.png" alt="">
     </div>
 
     <div id="contact">
         <h2>邮箱：info@example.com</h2>
     </div>
-    <div class="footer">
-        <p>&copy; 2024 921实验室. All Rights Reserved.</p>
+    <div class="footer col-md-12">
+        <p>&copy; 2024 东北林业大学 All Rights Reserved.</p>
     </div>
 </div>
 

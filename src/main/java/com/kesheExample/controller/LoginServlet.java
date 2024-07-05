@@ -14,8 +14,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.kesheExample.entity.Admin.getSexFromString;
 
@@ -45,7 +43,7 @@ public class LoginServlet extends HttpServlet {
             ps.setString(2,psw);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()){
-                    String titleStr = rs.getString("title"); // 假设数据库中存储的是枚举名称的字符串表示
+                    String titleStr = rs.getString("id"); // 假设数据库中存储的是枚举名称的字符串表示
                     Admin.Title title = Admin.Title.valueOf(titleStr.toUpperCase());
                     User.Title title1 = User.Title.valueOf(titleStr.toUpperCase());
                     String sexStr = rs.getString("sex"); // 假设数据库中存储的是枚举名称的字符串表示

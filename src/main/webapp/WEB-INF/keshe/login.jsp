@@ -14,7 +14,7 @@
         /*太丑了需要换*/
         #login {
             background-color: palevioletred;
-            width: 400px;
+            max-width: 960px;
             margin: auto;
             color: white;
             text-align: center;
@@ -26,7 +26,7 @@
 </head>
 <body>
 <div id="login">
-    <form method="post" action="nefu/login">
+    <form method="post" action="/web_experiment_war_exploded/nefu/login">
         身份：
         <select name="identity">
             <option value=""></option>
@@ -40,6 +40,7 @@
         <br>
         <button type="submit">登录</button>
     </form>
+    <a href="register">没有账号则跳转至注册</a>
 </div>
 </body>
 </html>

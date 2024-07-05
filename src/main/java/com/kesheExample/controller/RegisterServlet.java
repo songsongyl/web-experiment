@@ -21,7 +21,32 @@ public class RegisterServlet extends HttpServlet {
       String password = req.getParameter("password");
       String phone = req.getParameter("phone");
       String sex = req.getParameter("sex");
-      int age = Integer.parseInt(req.getParameter("age"));
+        if (id == null || id.trim().isEmpty()) {
+            throw new ServletException("身份标识不能为空");
+        }
+        if (name == null || name.trim().isEmpty()) {
+            throw new ServletException("用户名不能为空");
+        }
+        if (password == null || password.trim().isEmpty()) {
+            throw new ServletException("密码不能为空");
+        }
+        if (phone == null || phone.trim().isEmpty()) {
+            throw new ServletException("电话号码不能为空");
+        }
+        if (sex == null || sex.trim().isEmpty()) {
+            throw new ServletException("性别不能为空");
+        }
+        String ageStr = req.getParameter("age");
+        int age = 0; // 默认值
+        if (ageStr != null && !ageStr.trim().isEmpty()) {
+            try {
+                age = Integer.parseInt(ageStr.trim());
+            } catch (NumberFormatException e) {
+                // 处理无法转换的情况，例如记录日志或设置错误消息
+                // 可以选择抛出一个更具体的错误给用户
+                throw new ServletException("年龄必须是有效的整数", e);
+            }
+        }
       String tableName = "User1";
         if(id.equals("admin")){
             tableName = "admin";
@@ -45,6 +70,7 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/keshe/register.jsp");
+        req.getRequestDispatcher("/WEB-INF/keshe/register.jsp").forward(req,resp);
+//        哈哈哈哈哈，挑了半天bug，一直未成功进入注册页面，最后发现没有写forward
     }
 }

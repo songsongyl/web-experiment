@@ -1,6 +1,6 @@
 package com.kesheExample.filter;
 
-import com.example01.entity.User;
+import com.kesheExample.entity.User;
 import com.kesheExample.entity.Admin;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -18,17 +18,13 @@ public class Filter extends HttpFilter {
     private List<String> excludes = List.of("/nefu/login","/nefu/register");
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
-//        for (String e : excludes) {
-//            if (e.equals(req.getServletPath())) {
-//                chain.doFilter(req, res);
-//                return;
-//            }
-//        }
-        if (excludes.stream().anyMatch(e -> e.equals(req.getRequestURI()))) {
-            // 如果在排除列表中，则直接放行请求
-            chain.doFilter(req, res);
-            return;
+        for (String e : excludes) {
+            if (e.equals(req.getServletPath())) {
+                chain.doFilter(req, res);
+                return;
+            }
         }
+
         HttpSession session = req.getSession(false); // 不创建新会话
         if (session != null) {
             User user = (User) session.getAttribute("user");
@@ -47,7 +43,7 @@ public class Filter extends HttpFilter {
             res.sendRedirect(req.getContextPath() + "/nefu/login");
             return;
         }
-        chain.doFilter(req, res);
+//        chain.doFilter(req, res);
     }
 
     }

@@ -23,14 +23,19 @@ public class Admin {
         this.age = age;
     }
     public static Sex getSexFromString(String sexStr) {
-        switch (sexStr.toUpperCase()) {
-            case "MALE":
-                return Sex.MALE;
-            case "FEMALE":
-                return Sex.FEMALE;
-            default:
-                throw new IllegalArgumentException("Invalid sex: " + sexStr);
+        if ("男".equals(sexStr)) {
+            return Admin.Sex.MALE;
+        } else if ("女".equals(sexStr)) {
+            return Admin.Sex.FEMALE;
         }
+        sexStr = sexStr.toUpperCase(); // 转换为大写以便统一处理
+        if ("MALE".equals(sexStr)) {
+            return Admin.Sex.MALE;
+        } else if ("FEMALE".equals(sexStr)) {
+            return Admin.Sex.FEMALE;
+        }
+        // 如果以上条件都不满足，则抛出异常
+        throw new IllegalArgumentException("Invalid sex: " + sexStr);
     }
     public int getAge() {
         return age;

@@ -101,26 +101,26 @@
             width: 20px;
             height: 15px;
             position: absolute;
-            background-image: url(img/search.png);
+            background-image: url(/img/search.png);
             background-repeat: no-repeat;
             left: 440px;
             z-index: 2;
         }
 
-        .top-right {
-            margin-left: 100px;
-        }
-        .top-right input{
-            width: 50px;
-            height: 30px;
-            border-radius: 10px;
-            background-color: palevioletred;
-            margin-top: 15px;
-            /*outline: none;*/
-            border: none;
-            padding: 5px;
-            margin-right: 10px;
-        }
+        /*.top-right {*/
+        /*    margin-left: 100px;*/
+        /*}*/
+        /*.top-right input{*/
+        /*    width: 50px;*/
+        /*    height: 30px;*/
+        /*    border-radius: 10px;*/
+        /*    background-color: palevioletred;*/
+        /*    margin-top: 15px;*/
+        /*    !*outline: none;*!*/
+        /*    border: none;*/
+        /*    padding: 5px;*/
+        /*    margin-right: 10px;*/
+        /*}*/
         .content {
             width: 100%;
             height: 400px;
@@ -208,7 +208,7 @@
 <div class="container">
 
     <div class="header">
-        <img src="./img/04.jpg" title="校徽">
+        <img src="/img/04.jpg" title="校徽">
         <ul class="top">
             <li class="nav-major dropdown">专业介绍
                 <ul class="major drop">
@@ -219,16 +219,16 @@
             </li>
             <li class="nav-lab  dropdown">实验室介绍
                 <ul class="lab drop">
-                    <li><a href="./css/lab/921lab.html">921实验室</a></li>
-                    <li><a href="./css/lab/923lab.html">923创新实验室</a></li>
-                    <li><a href="./css/lab/925lab.html">925移动开发实验室</a></li>
+                    <li><a href="/html/lab/921lab.html">921实验室</a></li>
+                    <li><a href="/html/lab/923lab.html">923创新实验室</a></li>
+                    <li><a href="/html/lab/925lab.html">925移动开发实验室</a></li>
                 </ul>
             </li>
             <li class="nav-teacher  dropdown">教师队伍
                 <ul class="teacher drop">
-                    <li><a href="css/teacher/prolist.html">教授</a></li>
-                    <li><a href="css/teacher/assProList.html">副教授</a></li>
-                    <li><a href="css/teacher/lecturerlist.html">讲师</a></li>
+                    <li><a href="../../html/teacher/prolist.html">教授</a></li>
+                    <li><a href="/html/teacher/assProList.html">副教授</a></li>
+                    <li><a href="/html/teacher/lecturerlist.html">讲师</a></li>
                 </ul>
             </li>
             <li class="nav-work  dropdown">就业指南
@@ -243,13 +243,13 @@
                 <a href="#"></a>
             </li>
         </ul>
-        <div class="top-right">
-            <a href="login.jsp"> <input type="button" value="登录"></a>
-            <a href="register.jsp"> <input type="button" value="注册"></a>
-        </div>
+<%--        <div class="top-right">--%>
+<%--            <a href="nefu/login"> <input type="button" value="登录"></a>--%>
+<%--            <a href="nefu/register"> <input type="button" value="注册"></a>--%>
+<%--        </div>--%>
     </div>
     <div class="content">
-        <img src="./img/01.jpg" alt="" title="校门">
+        <img src="/img/01.jpg" alt="" title="校门">
         <!--        <ul class="dot">-->
         <!--            <li></li>-->
         <!--            <li></li>-->
@@ -276,9 +276,9 @@
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
     const data = [
-        {url: './img/01.jpg',title:"校门"},
-        {url:'./img/02.jpg',title:"红房子"},
-        {url:'./img/03.jpg',title:"知园"}]
+        {url: '/img/01.jpg',title:"校门"},
+        {url:'/img/02.jpg',title:"红房子"},
+        {url:'/img/03.jpg',title:"知园"}]
     $(function (){
         // alert("欢迎来到东北林业大学")
         const img =$(".content img")
@@ -288,7 +288,7 @@
         let changeF = ()=>{
             img.attr('src', data[i].url);
             img.attr('title', data[i].title);
-
+            console.log('Image loaded:', data[i].title);
         }
         // changeF()
         next.click(function (){

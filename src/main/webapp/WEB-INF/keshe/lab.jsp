@@ -1,10 +1,12 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>921实验室</title>
+    <c:url var="base" value="/"/>
+    <base href="${base}">
     <style>
         * {
             font-family: Arial, sans-serif;
@@ -77,6 +79,7 @@
         }
         .dropdown {
             position: relative;
+            display: flex;
         }
         .dropdown:hover .drop{
             display: block;
@@ -113,20 +116,21 @@
 
         .top-right {
             margin-left: 30px;
-        }
-        .top-right input{
-            width: 50px;
-            height: 30px;
-            border-radius: 10px;
-            background-color: palevioletred;
-            margin-top: 15px;
+            /*margin-top: 15px;*/
             /*outline: none;*/
             border: none;
             padding: 5px;
-            margin-right: 10px;
+            /*margin-right: 10px;*/
         }
-        .top-right input.toggle_account{
-            width: 70px;
+        .top-right a {
+            width: 75px;
+            height: 30px;
+            border-radius: 10px;
+            background-color: palevioletred;
+            display: inline-block;
+            padding: 3px;
+            text-align: center;
+            margin: 10px;
         }
         .img {
             width: 100px;
@@ -203,11 +207,10 @@
         .col-md-12 {width: 100%;}
     </style>
 </head>
-
 <body>
 <div class="container">
     <div class="header" >
-        <img src="../../img/04.jpg" title="校徽" alt="未成功加载">
+        <img src="img/04.jpg" title="校徽" alt="未成功加载">
         <ul class="top">
             <li class="nav-major dropdown">专业介绍
                 <ul class="major drop">
@@ -218,16 +221,16 @@
             </li>
             <li class="nav-lab  dropdown">实验室介绍
                 <ul class="lab drop">
-                    <li><a href="921lab.html">921实验室</a></li>
-                    <li><a href="923lab.html">923创新实验室</a></li>
-                    <li><a href="925lab.html">925移动开发实验室</a></li>
+                    <li><a href="lab.jsp">921实验室</a></li>
+                    <li><a href="923lab.jsp">923创新实验室</a></li>
+                    <li><a href="925lab.jsp">925移动开发实验室</a></li>
                 </ul>
             </li>
             <li class="nav-teacher  dropdown">教师队伍
                 <ul class="teacher drop">
-                    <li><a href="../teacher/prolist.html">教授</a></li>
-                    <li><a href="../teacher/assProList.html">副教授</a></li>
-                    <li><a href="../teacher/lecturerlist.html">讲师</a></li>
+                    <li><a href="nefu/listteachers?title=PROFESSOR">教授</a></li>
+                    <li><a href="nefu/listteachers?title=ASSPRO">副教授</a></li>
+                    <li><a href="nefu/listteachers?title=LECTURE">讲师</a></li>
                 </ul>
             </li>
             <li class="nav-work  dropdown">就业指南
@@ -239,12 +242,12 @@
             </li>
             <li class="search">
                 <input type="text" placeholder="请输入关键词">
-                <img src="../../img/search.png" alt="">
+                <img src="img/search.png" alt="">
             </li>
         </ul>
         <div class="top-right">
-            <a href="/WEB-INF/keshe/login"> <input type="button" class="toggle_account" value="切换账号"></a>
-            <a href="/WEB-INF/keshe/register"> <input type="button" value="注册"></a>
+            <a href="nefu/login">切换账号</a>
+            <a href="nefu/register">注册</a>
         </div>
 
     </div>
@@ -259,7 +262,7 @@
         <h2>关于我们</h2>
         <p>我们的实验室专注于前沿科学技术的研究和创新，致力于推动科学进步和社会发展。</p>
         <button class=" button img">点击显示图片</button>
-        <img src="../../img/lab1.jpg" alt="">
+        <img src="img/lab1.jpg" alt="">
     </div>
 
     <div id="research ">
@@ -269,9 +272,9 @@
     <div id="team ">
         <h2>团队成员</h2>
         <p class="col-md-12">我们的团队由一群充满激情和创造力的科学家、工程师和研究人员组成，他们在各自的领域取得了丰硕的成果。</p>
-        <img class="col-md-2" src="../../img/pro2.png" alt="">
-        <img class="col-md-2" src="../../img/pro.png" alt="">
-        <img class="col-md-2" src="../../img/pro2.png" alt="">
+        <img class="col-md-2" src="img/pro2.png" alt="">
+        <img class="col-md-2" src="img/pro.png" alt="">
+        <img class="col-md-2" src="img/pro2.png" alt="">
     </div>
 
     <div id="contact">
@@ -315,5 +318,4 @@
     });
 </script>>
 </body>
-
 </html>

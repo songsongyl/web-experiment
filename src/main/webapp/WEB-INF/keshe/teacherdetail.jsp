@@ -12,10 +12,10 @@
             padding: 0;
             margin: 0;
             box-sizing: border-box;
+
         }
-        .container {
-            max-width: 1425px;
-        }
+
+
         .header {
             /*border: 1px solid red;*/
             width: 100%;
@@ -24,11 +24,12 @@
             position: relative;
             z-index: 1;
             display: flex;
+            height: 70px;
         }
         .header img {
             /*border: 1px solid red;*/
             width: 6%;
-            height: 66.84px;
+            height: 100%;
             color:  darkcyan;
             /*display: flex;*/
             /*filter: hue-rotate(120deg);*/
@@ -74,6 +75,7 @@
         }
         .dropdown {
             position: relative;
+            display: flex;
         }
         .dropdown:hover .drop{
             display: block;
@@ -109,90 +111,46 @@
         }
 
         .top-right {
-            margin-left: 100px;
-        }
-        .top-right input{
-            width: 50px;
-            height: 30px;
-            border-radius: 10px;
-            background-color: palevioletred;
-            margin-top: 15px;
+            margin-left: 30px;
+            /*margin-top: 15px;*/
             /*outline: none;*/
             border: none;
             padding: 5px;
-            margin-right: 10px;
-        }
-        .top-right input.toggle_account{
-            width: 70px;
-        }
-        .content {
-            width: 100%;
-            height: 400px;
-            position: relative;
-            /*display: flex;*/
-        }
-        .content img{
-            /*position: relative;*/
-            width: 100%;
-            height: 100%;
-        }
-        .content .toggle .pre{
-            position: absolute;
-            top: 200px;
-            opacity: 0.7;
-            /*right: 5px;*/
-            left: 5px;
-            margin-right: 1350px;
-        }
-        .content .toggle .next {
-            position: absolute;
-            top: 200px;
-            opacity: 0.7;
-            right: 10px;
             /*margin-right: 10px;*/
         }
-        .toggle button {
-            width: 20px;
-            height: 20px;
+        .top-right a {
+            width: 75px;
+            height: 30px;
+            border-radius: 10px;
+            background-color: palevioletred;
+            display: inline-block;
+            padding: 3px;
+            text-align: center;
+            margin: 10px;
+            text-decoration: none;
         }
-        /*.content .dot {*/
-        /*    list-style: none;*/
-        /*    position: absolute;*/
-        /*    bottom: 40px;*/
-        /*    left: 700px;*/
-        /*    display: flex;*/
-        /*}*/
-        /*.content .dot li {*/
-        /*    width: 8px;*/
-        /*    height: 8px;*/
-        /*    border-radius: 50%;*/
-        /*    background-color: chartreuse;*/
-        /*    opacity: 0.5;*/
-        /*    cursor: pointer;*/
-        /*    padding: 5px;*/
-        /*    margin: 5px;*/
-        /*}*/
+        .content img {
+            width: 300px;
+            height: 330px;
+            border-radius: 50%;
+            opacity: 1;
+            background-size: contain;
+            margin: 20px;
+        }
 
-        .foot {
-            background-color: antiquewhite;
-            width: 100%;
-            height: 300px;
+        .content {
+            text-indent: 2em;
+            margin-top: 50px;
+            padding: 15px;
             display: flex;
         }
-        .news {
-            /*border: 1px solid red;*/
-            height: 100%;
-            text-align: center;
-            padding: 5px;
-        }
 
-        .notice {
-            /*border: 1px solid darkcyan;*/
-            height: 100%;
-            text-align: center;
-            padding: 5px;
+        a {
+            text-decoration: none;
+            /*color: #282727;*/
+            display: block;
         }
-        #footer {
+        .footer {
             background-color: darkcyan;
             color: white;
             text-align: center;
@@ -200,16 +158,26 @@
             position: fixed;
             bottom: 0;
         }
+
+
+        .col-md-1 {width: 8.33%;}
+        .col-md-2 {width: 16.67%;}
+        .col-md-3 {width: 25%;}
+        .col-md-4 {width: 33.33%;}
+        .col-md-5 {width: 41.67%;}
         .col-md-6 {width: 50%;}
+        .col-md-7 {width: 58.33%;}
+        .col-md-8 {width: 66.67%;}
+        .col-md-9 {width: 75%;}
+        .col-md-10 {width: 83.33%;}
+        .col-md-11 {width: 91.67%;}
         .col-md-12 {width: 100%;}
     </style>
 </head>
 <body>
 <div class="container">
-
     <div class="header">
         <img src="img/04.jpg" title="校徽" alt="未成功加载">
-<%--        啊啊啊啊，改了好久，最终幡然醒悟，应该加个部署路径--%>
         <ul class="top">
             <li class="nav-major dropdown">专业介绍
                 <ul class="major drop">
@@ -245,82 +213,29 @@
             </li>
         </ul>
         <div class="top-right">
-            <a href="nefu/login"> <input type="button" class="toggle_account" value="切换账号"></a>
-            <a href="nefu/register"> <input type="button" value="注册"></a>
+            <a href="nefu/login">切换账号</a>
+            <a href="nefu/register"> 注册</a>
         </div>
+
     </div>
     <div class="content">
-        <img src="img/01.jpg" alt="" title="校门">
-        <!--        <ul class="dot">-->
-        <!--            <li></li>-->
-        <!--            <li></li>-->
-        <!--            <li></li>-->
-        <!--        </ul>-->
-        <div class="toggle">
-            <button class="pre">&lt;</button>
-            <button class="next">&gt;</button>
-        </div>
+        <img src="img/pro2.png" alt="">
+        <br>
+        <h3>${teacher.name}</h3>
+        <p>东北林业大学教学名师，森林持续经营与环境微生物工程黑龙江省重点实验室主任，中国林学会森林工程分会理事长，中国林学会林业机械分会副理事长，
+            国家中文核心期刊《森林工程》主编。近5年来，主持完成了国家林业公益行业专项1项，主持国家林业局推广项目1项，主持国家十三五重点研发子课题1项，
+            参加了十二五科技支撑课题3项，黑龙江省攻关和基金课题4项，黑龙江省应用技术重大项目1项，哈尔滨市基金1项。出版学术专著4部。山地退化森林生态系统恢复优化模式及配套技术2012年获黑龙江省科技进步三等奖，
+            低质林结构与功能优化调控技术2013年获黑龙江省科技进步二等奖，小兴安岭森林分类经营技术研究与示范2016年获黑龙江省科技进步三等奖；
+            大小兴安岭森林分类经营技术集成与示范2021获梁希科学技术奖二等奖。“21世纪初森林工程本科专业人才培养模式及实验教学的研究”2009年获黑龙江省优秀教学成果一等奖；
+            “面向一流学科的森林工程创新型复合人才培养体系研究与实践”2018年获黑龙江省优秀教学成果一等奖；获国家专利10余项；国内外发表学术论文200余篇。</p>
     </div>
-    <div class="foot col-md-12">
-        <div class="news col-md-6">
-            <h3>每日新闻</h3>
-            <ul>
+<%--    <button class="root"><a href="nefu">返回首页</a></button>--%>
+<%--    <br>--%>
+<%--    <button class="pre"><a href="prolist.html">返回上一级</a></button>--%>
 
-            </ul>
+        <div class="footer col-md-12">
+            <p>&copy; 2024 东北林业大学 All Rights Reserved.</p>
         </div>
-        <div class="notice col-md-6">
-            <h3>每日公告</h3>
-
-        </div>
-    </div>
-    <div id="footer" class="col-md-12">
-<%--        <%@include file="footer.jsp "%>--%>
-    <p>&copy; 2024 东北林业大学 All Rights Reserved.</p>
-    </div>
 </div>
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    const data = [
-        {url: 'img/01.jpg',title:"校门"},
-        {url:'img/02.jpg',title:"红房子"},
-        {url:'img/03.jpg',title:"知园"}]
-    $(function (){
-        // alert("欢迎来到东北林业大学")
-        const img =$(".content img")
-        const next =$(".toggle .next")
-        const pre = $(".toggle .pre")
-        let i =0
-        let changeF = ()=>{
-            img.attr('src', data[i].url);
-            img.attr('title', data[i].title);
-            console.log('Image loaded:', data[i].title);
-        }
-        // changeF()
-        next.click(function (){
-            i++
-            i = i >=data.length ? 0:i
-            changeF()
-        })
-        pre.click(function (){
-            i--
-            i = i<0 ? data.length-1:i
-            changeF()
-        })
-        let id = setInterval(function (){
-            next.click()
-        },1000)
-        const  stop = $(".content")
-        stop.hover(function (){
-            clearInterval(id)
-        },function (){
-            clearInterval(id)
-            id = setInterval(function (){
-                next.click()
-            },1000)
-        })
-
-
-    })
-</script>
 </body>
 </html>

@@ -1,5 +1,7 @@
+<%--<jsp:useBean id="title" scope="request" type="com.kesheExample.entity.Teacher.Title"/>--%>
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<jsp:useBean id="teachers" scope="request" type="java.util.List<com.kesheExample.entity.Teacher>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,10 +14,9 @@
             padding: 0;
             margin: 0;
             box-sizing: border-box;
+
         }
-        .container {
-            max-width: 1425px;
-        }
+
         .header {
             /*border: 1px solid red;*/
             width: 100%;
@@ -24,11 +25,12 @@
             position: relative;
             z-index: 1;
             display: flex;
+            height: 70px;
         }
         .header img {
             /*border: 1px solid red;*/
             width: 6%;
-            height: 66.84px;
+            height: 100%;
             color:  darkcyan;
             /*display: flex;*/
             /*filter: hue-rotate(120deg);*/
@@ -74,6 +76,7 @@
         }
         .dropdown {
             position: relative;
+            display: flex;
         }
         .dropdown:hover .drop{
             display: block;
@@ -109,90 +112,30 @@
         }
 
         .top-right {
-            margin-left: 100px;
+            margin-left: 30px;
+            /*margin-top: 15px;*/
+            outline: none;
+            border: none;
+            padding: 5px;
+            /*margin-right: 10px;*/
         }
-        .top-right input{
-            width: 50px;
+        .top-right a {
+            width: 75px;
             height: 30px;
             border-radius: 10px;
             background-color: palevioletred;
-            margin-top: 15px;
-            /*outline: none;*/
-            border: none;
-            padding: 5px;
-            margin-right: 10px;
-        }
-        .top-right input.toggle_account{
-            width: 70px;
+            display: inline-block;
+            padding: 3px;
+            text-align: center;
+            margin: 10px;
+            text-decoration: none;
         }
         .content {
-            width: 100%;
-            height: 400px;
-            position: relative;
-            /*display: flex;*/
-        }
-        .content img{
-            /*position: relative;*/
-            width: 100%;
-            height: 100%;
-        }
-        .content .toggle .pre{
-            position: absolute;
-            top: 200px;
-            opacity: 0.7;
-            /*right: 5px;*/
-            left: 5px;
-            margin-right: 1350px;
-        }
-        .content .toggle .next {
-            position: absolute;
-            top: 200px;
-            opacity: 0.7;
-            right: 10px;
-            /*margin-right: 10px;*/
-        }
-        .toggle button {
-            width: 20px;
-            height: 20px;
-        }
-        /*.content .dot {*/
-        /*    list-style: none;*/
-        /*    position: absolute;*/
-        /*    bottom: 40px;*/
-        /*    left: 700px;*/
-        /*    display: flex;*/
-        /*}*/
-        /*.content .dot li {*/
-        /*    width: 8px;*/
-        /*    height: 8px;*/
-        /*    border-radius: 50%;*/
-        /*    background-color: chartreuse;*/
-        /*    opacity: 0.5;*/
-        /*    cursor: pointer;*/
-        /*    padding: 5px;*/
-        /*    margin: 5px;*/
-        /*}*/
+            font-size: 2em;
 
-        .foot {
-            background-color: antiquewhite;
-            width: 100%;
-            height: 300px;
-            display: flex;
-        }
-        .news {
-            /*border: 1px solid red;*/
-            height: 100%;
-            text-align: center;
-            padding: 5px;
         }
 
-        .notice {
-            /*border: 1px solid darkcyan;*/
-            height: 100%;
-            text-align: center;
-            padding: 5px;
-        }
-        #footer {
+        .footer {
             background-color: darkcyan;
             color: white;
             text-align: center;
@@ -200,16 +143,26 @@
             position: fixed;
             bottom: 0;
         }
+
+
+        .col-md-1 {width: 8.33%;}
+        .col-md-2 {width: 16.67%;}
+        .col-md-3 {width: 25%;}
+        .col-md-4 {width: 33.33%;}
+        .col-md-5 {width: 41.67%;}
         .col-md-6 {width: 50%;}
+        .col-md-7 {width: 58.33%;}
+        .col-md-8 {width: 66.67%;}
+        .col-md-9 {width: 75%;}
+        .col-md-10 {width: 83.33%;}
+        .col-md-11 {width: 91.67%;}
         .col-md-12 {width: 100%;}
     </style>
 </head>
 <body>
 <div class="container">
-
     <div class="header">
         <img src="img/04.jpg" title="校徽" alt="未成功加载">
-<%--        啊啊啊啊，改了好久，最终幡然醒悟，应该加个部署路径--%>
         <ul class="top">
             <li class="nav-major dropdown">专业介绍
                 <ul class="major drop">
@@ -245,82 +198,28 @@
             </li>
         </ul>
         <div class="top-right">
-            <a href="nefu/login"> <input type="button" class="toggle_account" value="切换账号"></a>
-            <a href="nefu/register"> <input type="button" value="注册"></a>
+            <a href="nefu/login">切换账号</a>
+            <a href="nefu/register">注册</a>
         </div>
+
     </div>
     <div class="content">
-        <img src="img/01.jpg" alt="" title="校门">
-        <!--        <ul class="dot">-->
-        <!--            <li></li>-->
-        <!--            <li></li>-->
-        <!--            <li></li>-->
-        <!--        </ul>-->
-        <div class="toggle">
-            <button class="pre">&lt;</button>
-            <button class="next">&gt;</button>
-        </div>
+        <h1>${title}</h1>
+        <%--<ul>--%>
+        <%--    <li><a href="nefu/listteachers?title=PROFESSOR">教授</a></li>--%>
+        <%--    <li><a href="nefu/listteachers?title=ASSPRO">副教授</a></li>--%>
+        <%--    <li><a href="nefu/listteachers?title=LECTURE">讲师</a></li>--%>
+        <%--</ul>--%>
+        <ul>
+            <c:forEach var="teacher" items="${teachers}">
+                <li><a href="nefu/teacherdetail?id=${teacher.id}">${teacher.name}</a> - ${teacher.title}</li>
+            </c:forEach>
+        </ul>
     </div>
-    <div class="foot col-md-12">
-        <div class="news col-md-6">
-            <h3>每日新闻</h3>
-            <ul>
-
-            </ul>
-        </div>
-        <div class="notice col-md-6">
-            <h3>每日公告</h3>
-
-        </div>
-    </div>
-    <div id="footer" class="col-md-12">
-<%--        <%@include file="footer.jsp "%>--%>
-    <p>&copy; 2024 东北林业大学 All Rights Reserved.</p>
+    <div class="footer col-md-12">
+            <p>&copy; 2024 东北林业大学 All Rights Reserved.</p>
     </div>
 </div>
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    const data = [
-        {url: 'img/01.jpg',title:"校门"},
-        {url:'img/02.jpg',title:"红房子"},
-        {url:'img/03.jpg',title:"知园"}]
-    $(function (){
-        // alert("欢迎来到东北林业大学")
-        const img =$(".content img")
-        const next =$(".toggle .next")
-        const pre = $(".toggle .pre")
-        let i =0
-        let changeF = ()=>{
-            img.attr('src', data[i].url);
-            img.attr('title', data[i].title);
-            console.log('Image loaded:', data[i].title);
-        }
-        // changeF()
-        next.click(function (){
-            i++
-            i = i >=data.length ? 0:i
-            changeF()
-        })
-        pre.click(function (){
-            i--
-            i = i<0 ? data.length-1:i
-            changeF()
-        })
-        let id = setInterval(function (){
-            next.click()
-        },1000)
-        const  stop = $(".content")
-        stop.hover(function (){
-            clearInterval(id)
-        },function (){
-            clearInterval(id)
-            id = setInterval(function (){
-                next.click()
-            },1000)
-        })
 
-
-    })
-</script>
 </body>
 </html>

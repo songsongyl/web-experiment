@@ -1,8 +1,10 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
     <title>就业指南</title>
     <style>
         /* 样式表 */
@@ -99,12 +101,12 @@
         <h1>就业指南</h1>
         <button class="root"><a href="nefu">返回首页</a></button>
     </div>
-        <ul class="nav">
-            <li><a href="#intro">介绍</a></li>
-            <li><a href="#jobs">热门职位</a></li>
-            <li><a href="#resources">资源链接</a></li>
-            <li><a href="#contact">联系我们</a></li>
-        </ul>
+    <ul class="nav">
+        <li><a href="#intro">介绍</a></li>
+        <li><a href="#jobs">热门职位</a></li>
+        <li><a href="#resources">资源链接</a></li>
+        <li><a href="#contact">联系我们</a></li>
+    </ul>
 
     <div class="content">
         <div id="intro">
@@ -146,10 +148,5 @@
 
     </div>
 </div>
-
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-
-</script>
 </body>
 </html>

@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
         String psw = req.getParameter("password");
         String id = req.getParameter("identity");
         String tableName = "User1"; // 假设根据某些逻辑决定使用哪个表
-        if(id.equals("admin")){
+        if(id.equals("ADMIN")){
             tableName = "admin";
         }
         String sql = "SELECT * FROM " + tableName + " WHERE name = ? AND password = ?";
@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
                     User.Title title1 = User.Title.valueOf(titleStr.toUpperCase());
                     String sexStr = rs.getString("sex"); // 假设数据库中存储的是枚举名称的字符串表示
                     Admin.Sex sex = getSexFromString(sexStr); // 自定义方法转换
-                    if (id.equals("admin")){
+                    if (id.equals("ADMIN")){
                         Admin admin = new Admin(title,rs.getString("name"),rs.getString("password"),rs.getString("phone"),sex,rs.getInt("age"));
                         req.getSession().setAttribute("admin", admin);
                     }else{

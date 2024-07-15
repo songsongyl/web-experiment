@@ -5,6 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <c:url var="base" value="/"/>
+    <base href="${base}">
     <style>
         *{
             padding: 0;
@@ -33,7 +35,7 @@
 <body>
 <div id="register">
     <h3>欢迎注册</h3>
-    <form action="/web_experiment_war_exploded/nefu/register" method="post" id="registerForm">
+    <form action="nefu/register" method="post" id="registerForm">
         请选择身份:
         <select name="identity" id="">
             <option value="USER">用户</option>
@@ -41,16 +43,14 @@
         </select>
         <br>
         <label >用户名：<input type="text" name="username" placeholder="用户名长度不能少于4个字符"></label><br>
-        <label >密码：<input type="password" name="password" id="password" placeholder="密码6-9个字符"></label><br>
+        <label >密码：<input type="password" name="password" id="password" placeholder="密码5-9个字符"></label><br>
         <label >密码：<input type="password" name="confirm_password" id="confirm_password" placeholder="请再次输入密码"></label><br>
         <label >手机号：<input type="text" name="phone" placeholder="长度为11个字符且必须是数字"></label><br>
-        性别：
-        <label>
-            <input type="radio" name="sex" >男
-        </label>
-       <input type="radio" name="sex" id="sex">女
-        <label for="sex" generated="true" class="error"></label>
-        <br>
+        <label for="sex">性别:</label>
+        <select id="sex" name="sex" required>
+            <option value="MALE">男</option>
+            <option value="FEMALE">女</option>
+        </select><br>
         <label ><input type="text" name="age">年龄在18-28之间</label>
         <br>
         <button type="submit">注册</button>
@@ -69,12 +69,12 @@
                 },
                 password:{
                     required: true,
-                    minlength: 6,
+                    minlength: 5,
                     maxlength:9,
                 },
                 confirm_password:{
                     required:true,
-                    minlength: 6,
+                    minlength: 5,
                     maxlength:9,
                     equalTo:"#password"
                 },
@@ -97,12 +97,12 @@
                 },
                 password:{
                     required: "密码必须填写",
-                    minlength: "密码长度不能少于6个字符",
+                    minlength: "密码长度不能少于5个字符",
                     maxlength:"密码长度不能多于9个字符",
                 },
                 confirm_password:{
                     required:"确认密码必须填写",
-                    minlength: "密码长度不能少于6个字符",
+                    minlength: "密码长度不能少于5个字符",
                     maxlength:"密码长度不能多于9个字符",
                     equalTo:"确认密码与上面密码相同"
                 },

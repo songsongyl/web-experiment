@@ -1,5 +1,6 @@
 package com.kesheExample.controller;
 
+import com.kesheExample.entity.Admin;
 import com.kesheExample.util.DataSourceUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,6 +12,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import static com.kesheExample.entity.Admin.getSexFromString;
 
 @WebServlet("/nefu/register")
 public class RegisterServlet extends HttpServlet {
@@ -36,6 +39,11 @@ public class RegisterServlet extends HttpServlet {
         if (sex == null || sex.trim().isEmpty()) {
             throw new ServletException("性别不能为空");
         }
+        if (getSexFromString(sex)!= Admin.Sex.MALE&&getSexFromString(sex)!= Admin.Sex.FEMALE) {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid sex: " + sex);
+            return;
+        }
+
         String ageStr = req.getParameter("age");
         int age = 0; // 默认值
         if (ageStr != null && !ageStr.trim().isEmpty()) {
@@ -48,7 +56,7 @@ public class RegisterServlet extends HttpServlet {
             }
         }
       String tableName = "User1";
-        if(id.equals("admin")){
+        if(id.equals("ADMIN")){
             tableName = "admin";
         }
         String sql = "INSERT INTO " + tableName + "(id, name, password, phone, sex, age)VALUES (?, ?, ?,?,?, ?)";

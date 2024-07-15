@@ -155,23 +155,6 @@
             width: 20px;
             height: 20px;
         }
-        /*.content .dot {*/
-        /*    list-style: none;*/
-        /*    position: absolute;*/
-        /*    bottom: 40px;*/
-        /*    left: 700px;*/
-        /*    display: flex;*/
-        /*}*/
-        /*.content .dot li {*/
-        /*    width: 8px;*/
-        /*    height: 8px;*/
-        /*    border-radius: 50%;*/
-        /*    background-color: chartreuse;*/
-        /*    opacity: 0.5;*/
-        /*    cursor: pointer;*/
-        /*    padding: 5px;*/
-        /*    margin: 5px;*/
-        /*}*/
 
         .foot {
             background-color: antiquewhite;
@@ -264,7 +247,11 @@
         <div class="news col-md-6">
             <h3>每日新闻</h3>
             <ul>
-
+                <li><a href="nefu/news?id=1"></a></li>
+                <li><a href="nefu/news?id=2"></a></li>
+                <li><a href="nefu/news?id=3"></a></li>
+                <li><a href="nefu/news?id=4"></a></li>
+                <li><a href="nefu/news?id=5"></a></li>
             </ul>
         </div>
         <div class="notice col-md-6">

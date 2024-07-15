@@ -8,27 +8,77 @@
     <c:url var="base" value="/"/>
     <base href="${base}">
     <style>
-        *{
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-        #register {
-            background-color: palevioletred;
-            width: 960px;
-            margin: auto;
-            padding: 100px;
-            color: white;
-            text-align: center;
 
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        button {
-            background-color: orange;
+
+        #register {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        #register h3 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #register form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #register select {
+            width: 200px;
+        }
+        #register label {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        #register input, #register select, #register button {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
             border-radius: 5px;
-            width: 50px;
-            height: 32px;
-            margin-left: auto;
-            padding: 3px;
+            font-size: 14px;
+        }
+
+        #register input:focus, #register select:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        #register button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 150px;
+        }
+
+        #register button:hover {
+            background-color: #0056b3;
+        }
+        /* 错误提示信息样式 */
+        #register label.error {
+            color: red;
+            font-size: 12px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            display: block;
         }
     </style>
 </head>
@@ -36,32 +86,32 @@
 <div id="register">
     <h3>欢迎注册</h3>
     <form action="nefu/register" method="post" id="registerForm">
-        请选择身份:
-        <select name="identity" id="">
+        <label>请选择身份:<select name="identity" id="">
             <option value="USER">用户</option>
             <option value="ADMIN">管理员</option>
-        </select>
+        </select></label>
         <br>
         <label >用户名：<input type="text" name="username" placeholder="用户名长度不能少于4个字符"></label><br>
         <label >密码：<input type="password" name="password" id="password" placeholder="密码5-9个字符"></label><br>
         <label >密码：<input type="password" name="confirm_password" id="confirm_password" placeholder="请再次输入密码"></label><br>
         <label >手机号：<input type="text" name="phone" placeholder="长度为11个字符且必须是数字"></label><br>
-        <label for="sex">性别:</label>
+        <label for="sex">性别:
         <select id="sex" name="sex" required>
             <option value="MALE">男</option>
             <option value="FEMALE">女</option>
-        </select><br>
-        <label ><input type="text" name="age">年龄在18-28之间</label>
+        </select></label><br>
+        <label >年龄：<input type="text" name="age" placeholder="年龄在18-28之间"></label>
         <br>
         <button type="submit">注册</button>
     </form>
 </div>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="/jQeury.validate.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 
 <script>
     $(function (){
-        $("$registerForm").validate({
+        $("#registerForm").validate({
+            errorClass: "error",
             rules:{
                 username:{
                     required:true,
@@ -119,6 +169,8 @@
                     range:"年龄的范围是18-28之间",
                     digits:"必须为整数"
                 }
+            }, errorPlacement: function(error, element) {
+                error.appendTo(element.parent());
             }
         })
     })

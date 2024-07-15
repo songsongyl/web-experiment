@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>921实验室</title>
+    <title>923实验室</title>
     <c:url var="base" value="/"/>
     <base href="${base}">
     <style>
@@ -214,16 +214,16 @@
         <ul class="top">
             <li class="nav-major dropdown">专业介绍
                 <ul class="major drop">
-                    <li><a href="">专业简介</a></li>
-                    <li><a href="">方向简介</a></li>
-                    <li><a href="">分数线</a></li>
+                    <li><a href="nefu/major">专业简介</a></li>
+                    <li><a href="nefu/direction">方向简介</a></li>
+                    <li><a href="nefu/grade">分数线</a></li>
                 </ul>
             </li>
             <li class="nav-lab  dropdown">实验室介绍
                 <ul class="lab drop">
-                    <li><a href="lab.jsp">921实验室</a></li>
-                    <li><a href="923lab.jsp">923创新实验室</a></li>
-                    <li><a href="925lab.jsp">925移动开发实验室</a></li>
+                    <li><a href="nefu/lab?id=921">921实验室</a></li>
+                    <li><a href="nefu/lab?id=923">923创新实验室</a></li>
+                    <li><a href="nefu/lab?id=925">925移动开发实验室</a></li>
                 </ul>
             </li>
             <li class="nav-teacher  dropdown">教师队伍
@@ -235,9 +235,8 @@
             </li>
             <li class="nav-work  dropdown">就业指南
                 <ul class="work drop">
-                    <li><a href="">就业方向</a></li>
-                    <li><a href="">薪资待遇</a></li>
-                    <li><a href="">面试指导</a></li>
+                    <li><a href="nefu/work">就业方向</a></li>
+                    <li><a href="nefu/money">薪资待遇</a></li>
                 </ul>
             </li>
             <li class="search">
@@ -262,7 +261,7 @@
         <h2>关于我们</h2>
         <p>我们的实验室专注于前沿科学技术的研究和创新，致力于推动科学进步和社会发展。</p>
         <button class=" button img">点击显示图片</button>
-        <img src="img/lab1.jpg" alt="">
+        <img src="img/lab2.jpg" alt="">
     </div>
 
     <div id="research ">

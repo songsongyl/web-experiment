@@ -5,242 +5,240 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <c:url var="base" value="/"/>
+    <base href="${base}">
     <style>
         * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
         }
-        .container {
-            max-width: 1425px;
-            margin: 0 auto;
-        }
+
         .header {
+            /*border: 1px solid red;*/
             width: 100%;
             background-color: darkcyan;
-            overflow: hidden;
+            /*overflow: hidden;*/
             position: relative;
             z-index: 1;
+            display: flex;
+            height: 70px;
         }
         .header img {
+            /*border: 1px solid red;*/
             width: 6%;
-            height: auto;
-            vertical-align: middle;
+            height: 100%;
+            color:  darkcyan;
+            /*display: flex;*/
+            /*filter: hue-rotate(120deg);*/
         }
         .header .top {
             list-style: none;
             display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            padding-left: 100px;
+            /*position: absolute;*/
+            /*top:12px;*/
+            /*left: 100px;*/
+
         }
         .top li {
-            padding: 15px;
+            padding: 10px;
+            /*margin: auto;*/
             color: white;
             font-size: 1.2em;
-            position: relative;
+            margin-top: 10px;
         }
         .top li:not(.search):hover {
             background-color: cornflowerblue;
             color: #f08c00;
         }
+        .drop {
+            display: none;
+            /*display: flex;*/
+            list-style: none;
+            z-index: 10;
+            position: absolute;
+            flex-direction: column;
+            color: #f08c00;
+            top: 100%;
+            left: 0;
+            background-color: royalblue;
+        }
+        .drop a:hover {
+            color: #ffec99;
+        }
+        .header li a {
+            display: block;
+            text-decoration: none;
+            font-size: 0.7em;
+        }
         .dropdown {
             position: relative;
             display: flex;
-            margin: 5px;
-            top: 2px;
         }
-        .dropdown .drop {
-            display: none;
-            position: absolute;
-            /*top: 100%;*/
-            /*left: 0;*/
-            background-color: white;
-            /*border: 1px solid #ccc;*/
-            z-index: 10;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .dropdown:hover .drop {
+        .dropdown:hover .drop{
             display: block;
+            color: #f08c00;
         }
         .header .search {
             display: flex;
-            align-items: center;
-            margin-left: auto;
-            padding-right: 20px;
+            position: relative;
+            z-index: 1;
+            margin-left: 80px;
+            margin-top: 8px;
         }
         .search input {
             border-radius: 15px;
-            width: 200px;
+            width: 450px;
             height: 30px;
             background-color: white;
             border: 1px solid cornflowerblue;
             outline: none;
-            padding: 0 10px;
         }
         .search input::placeholder {
             font-size: 14px;
             color: #999;
         }
-        .search a {
+
+        .search img {
+            align-self: center;
             width: 20px;
-            height: 20px;
-            background-image: url(../../img/search.png);
-            background-repeat: no-repeat;
-            margin-left: 5px;
-            cursor: pointer;
-        }
-        .content {
-            width: 100%;
-            height: 700px;
-            position: relative;
-            z-index: 1;
-        }
-        .content img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .toggle {
+            height: 15px;
             position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
+            left: 430px;
             z-index: 2;
         }
-        .toggle button {
-            width: 30px;
-            height: 30px;
-            font-size: 1.5em;
-            background-color: rgba(255, 255, 255, 0.5);
+
+        .top-right {
+            margin-left: 30px;
+            /*margin-top: 15px;*/
+            outline: none;
             border: none;
-            cursor: pointer;
+            padding: 5px;
+            /*margin-right: 10px;*/
         }
-        .dot {
-            list-style: none;
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
+        .top-right a {
+            width: 75px;
+            height: 30px;
+            border-radius: 10px;
+            background-color: palevioletred;
+            display: inline-block;
+            padding: 3px;
+            text-align: center;
+            margin: 10px;
+            text-decoration: none;
         }
-        .dot li {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
+        .content table{
+            margin-top: 50px;
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #daaf5d;
+
+        }
+        table th ,table td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid gray;
+        }
+
+        tbody tr:nth-child(odd) {
             background-color: pink;
-            opacity: 0.5;
-            cursor: pointer;
-            margin: 0 5px;
-            transition: opacity 0.3s ease;
         }
-        .dot li.active {
-            opacity: 1;
+        tbody tr:nth-child(even) {
+            background-color: #545491;
         }
+
+        .footer {
+            background-color: darkcyan;
+            color: white;
+            text-align: center;
+            padding: 2px 0;
+            position: fixed;
+            bottom: 0;
+        }
+        .col-md-6 {width: 50%;}
+        .col-md-12 {width: 100%;}
     </style>
 </head>
 <body>
 <div class="container">
     <div class="header">
-        <img src="/img/04.jpg" title="校徽">
+        <img src="img/04.jpg" title="校徽" alt="未成功加载">
         <ul class="top">
             <li class="nav-major dropdown">专业介绍
-                <ul class="drop">
-                    <li><a href="">专业简介</a></li>
-                    <li><a href="">方向简介</a></li>
-                    <li><a href="">分数线</a></li>
+                <ul class="major drop">
+                    <li><a href="nefu/major">专业简介</a></li>
+                    <li><a href="nefu/direction">方向简介</a></li>
+                    <li><a href="nefu/grade">分数线</a></li>
                 </ul>
             </li>
-            <li class="nav-lab dropdown">实验室介绍
-                <ul class="drop">
-                    <li><a href="">921实验室</a></li>
-                    <li><a href="">923创新实验室</a></li>
-                    <li><a href="">925移动开发实验室</a></li>
+            <li class="nav-lab  dropdown">实验室介绍
+                <ul class="lab drop">
+                    <li><a href="nefu/lab?id=921">921实验室</a></li>
+                    <li><a href="nefu/lab?id=923">923创新实验室</a></li>
+                    <li><a href="nefu/lab?id=925">925移动开发实验室</a></li>
                 </ul>
             </li>
-            <li class="nav-teacher dropdown">教师队伍
-                <ul class="drop">
-                    <li><a href="">教授</a></li>
-                    <li><a href="">副教授</a></li>
-                    <li><a href="">讲师</a></li>
+            <li class="nav-teacher  dropdown">教师队伍
+                <ul class="teacher drop">
+                    <li><a href="nefu/listteachers?title=PROFESSOR">教授</a></li>
+                    <li><a href="nefu/listteachers?title=ASSPRO">副教授</a></li>
+                    <li><a href="nefu/listteachers?title=LECTURE">讲师</a></li>
                 </ul>
             </li>
-            <li class="nav-work dropdown">就业指南
-                <ul class="drop">
-                    <li><a href="">就业方向</a></li>
-                    <li><a href="">薪资待遇</a></li>
-                    <li><a href="">面试指导</a></li>
+            <li class="nav-work  dropdown">就业指南
+                <ul class="work drop">
+                    <li><a href="nefu/work">就业方向</a></li>
+                    <li><a href="nefu/money">薪资待遇</a></li>
                 </ul>
             </li>
-            <li>新闻</li>
-            <li>公告</li>
             <li class="search">
                 <input type="text" placeholder="请输入关键词">
-                <a href="#"></a>
+                <img src="img/search.png" alt="">
             </li>
         </ul>
+        <div class="top-right">
+            <a href="nefu/login">切换账号</a>
+            <a href="nefu/register">注册</a>
+        </div>
+
     </div>
     <div class="content">
-        <img src="/img/01.jpg" alt="" title="校门">
-        <ul class="dot">
-            <li class="active"></li>
-            <li></li>
-            <li></li>
-        </ul>
-        <div class="toggle">
-            <button class="pre">&lt;</button>
-            <button class="next">&gt;</button>
-        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>专业名称</th>
+                <th>最低分/最低位次</th>
+                <th>选科要求</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>生物科学（拔尖人才成栋班）</td>
+                <td>601/11044</td>
+                <td>物理</td>
+            </tr>
+            <tr>
+                <td>计算机类</td>
+                <td>592/13123</td>
+                <td>物理</td>
+            </tr>
+            <tr>
+                <td>人工智能</td>
+                <td>587/14357</td>
+                <td>物理</td>
+            </tr>
+            <tr>
+                <td>机器人工程</td>
+                <td>582/15628</td>
+                <td>物理</td>
+            </tr>
+            </tbody>
+        </table>
+
     </div>
-    <div class="footer">
+    <div class="footer col-md-12">
+        <p>&copy; 2024 东北林业大学 All Rights Reserved.</p>
     </div>
 </div>
-
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    const data = [
-        {url: '../img/01.jpg', title: "校门"},
-        {url: '../img/02.jpg', title: "红房子"},
-        {url: '../img/03.jpg', title: "知园"}
-    ];
-
-    $(function() {
-        const img = $(".content img");
-        const next = $(".toggle .next");
-        const pre = $(".toggle .pre");
-        let i = 0;
-
-        function changeImage() {
-            img.attr('src', data[i].url);
-            img.attr('title', data[i].title);
-            $(".content .active").removeClass("active");
-            $(`.content .dot li:eq(${i})`).addClass("active");
-        }
-
-        next.click(function() {
-            i++;
-            i = i >= 3 ? 0 : i;
-            changeImage();
-        });
-
-        pre.click(function() {
-            i--;
-            i = i < 0 ? data.length - 1 : i;
-            changeImage();
-        });
-
-        let intervalId = setInterval(function() {
-            next.click();
-        }, 1000);
-
-        $(".content").hover(function() {
-            clearInterval(intervalId);
-        }, function() {
-            intervalId = setInterval(function() {
-                next.click();
-            }, 1000);
-        });
-    });
-</script>
 </body>
 </html>

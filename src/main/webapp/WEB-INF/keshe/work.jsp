@@ -4,8 +4,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
     <title>就业指南</title>
+    <c:url var="base" value="/"/>
+    <base href="${base}">
     <style>
         /* 样式表 */
         * {
@@ -21,67 +22,159 @@
             max-width: 1423px;
         }
         .header {
-            display: flex;
-            align-items: center;
-            background-color: darkcyan;
-            color: white;
+            /*border: 1px solid red;*/
             width: 100%;
-            text-align: center;
+            background-color: darkcyan;
+            /*overflow: hidden;*/
+            position: relative;
+            z-index: 1;
+            display: flex;
+            height: 70px;
         }
         .header img {
+            /*border: 1px solid red;*/
             width: 6%;
+            height: 100%;
             color:  darkcyan;
-            vertical-align: center;
+            /*display: flex;*/
+            /*filter: hue-rotate(120deg);*/
         }
-
-        .root {
-            position: absolute;
-            right: 40px;
-            top: 20px;
-            border-radius: 20px;
-            outline: none;
-            background-color: pink;
-            display: inline-block;
-            width: 70px;
-            height: 30px;
-            padding: 3px;
-        }
-
-        a {
-            text-decoration: none;
-            display: block;
-            color: #111111;
-        }
-        .nav {
-            background-color: #184b4b;
-            color: white;
-            /*text-align: center;*/
-            padding: 10px ;
+        .header .top {
+            list-style: none;
             display: flex;
+            /*position: absolute;*/
+            /*top:12px;*/
+            /*left: 100px;*/
+
+        }
+        .top li {
+            padding: 10px;
+            /*margin: auto;*/
+            color: white;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .top li:not(.search):hover {
+            background-color: cornflowerblue;
+            color: #f08c00;
+        }
+        .drop {
+            display: none;
+            /*display: flex;*/
+            list-style: none;
+            z-index: 10;
+            position: absolute;
+            flex-direction: column;
+            color: #f08c00;
+            top: 100%;
+            left: 0;
+            background-color: royalblue;
+        }
+        .drop a:hover {
+            color: #ffec99;
+        }
+        .header li a {
+            display: block;
+            text-decoration: none;
+            font-size: 0.7em;
+        }
+        .dropdown {
+            position: relative;
+            display: flex;
+        }
+        .dropdown:hover .drop{
+            display: block;
+            color: #f08c00;
+        }
+        .header .search {
+            display: flex;
+            position: relative;
+            z-index: 1;
+            margin-left: 80px;
+            margin-top: 8px;
+        }
+        .search input {
+            border-radius: 15px;
+            width: 450px;
+            height: 30px;
+            background-color: white;
+            border: 1px solid cornflowerblue;
+            outline: none;
+        }
+        .search input::placeholder {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .search img {
+            align-self: center;
+            width: 20px;
+            height: 15px;
+            position: absolute;
+            left: 430px;
+            z-index: 2;
+        }
+
+        .top-right {
+            margin-left: 30px;
+            /*margin-top: 15px;*/
+            outline: none;
+            border: none;
+            padding: 5px;
+            /*margin-right: 10px;*/
+        }
+        .top-right a {
+            width: 75px;
+            height: 30px;
+            border-radius: 10px;
+            background-color: palevioletred;
+            display: inline-block;
+            padding: 3px;
+            text-align: center;
+            margin: 10px;
+            text-decoration: none;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+            margin: 20px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        ul {
             list-style: none;
         }
-        li {
-            margin: auto;
+        .section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: pink;
         }
-        .nav a {
-            color: white;
+        .section table, .section th, .section td {
+            border: 1px solid #ddd;
+        }
+        .section th, .section td {
+            padding: 10px;
+            text-align: left;
+        }
+        .section table td:hover {
+            background-color: bisque;
+        }
+        .section ul {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        .section ul li {
+            margin-bottom: 10px;
+        }
+        .section a {
+            color: #007BFF;
             text-decoration: none;
-            padding: 0 10px;
-            display: block;
-
         }
-        .nav a:hover {
-            background-color: darkcyan;
+        .section a:hover {
+            text-decoration: underline;
         }
-
-        p{
-            text-indent: 2em;
-        }
-        h1 {
-            text-align: center;
-            margin: auto;
-        }
-
         .footer {
             background-color: darkcyan;
             color: white;
@@ -89,63 +182,140 @@
             padding: 2px 0;
             position: fixed;
             bottom: 0;
-            width: 100%;
-            z-index: 1;
         }
+        .col-md-6 {width: 50%;}
+        .col-md-12 {width: 100%;}
+
     </style>
 </head>
 <body>
 <div class="container">
-    <div class=" header">
-        <img src="/img/04.jpg" title="校徽">
-        <h1>就业指南</h1>
-        <button class="root"><a href="nefu">返回首页</a></button>
-    </div>
-    <ul class="nav">
-        <li><a href="#intro">介绍</a></li>
-        <li><a href="#jobs">热门职位</a></li>
-        <li><a href="#resources">资源链接</a></li>
-        <li><a href="#contact">联系我们</a></li>
-    </ul>
-
-    <div class="content">
-        <div id="intro">
-            <!-- 介绍内容 -->
-
-        </div>
-        <div id="jobs">
-            <h2>热门职位</h2>
-            <br>
-            <div class="job">
-                <h3 class="job-title">Web开发工程师</h3>
-                <p class="job-description">负责网站前后端开发，熟练使用HTML/CSS/JavaScript和常用框架。</p>
-                <a href="" class="job-link">查看详细</a>
-            </div>
-            <div class="job">
-                <h3 class="job-title">产品经理</h3>
-                <p class="job-description" style="display: none;">负责产品的规划、设计和推广，具备良好的沟通和团队协作能力。</p>
-                <a href="" class="job-link">查看详细</a>
-            </div>
-        </div>
-        <div id="resources">
-            <h2>资源链接</h2>
-            <ul>
-                <li><a href="" target="_blank">招聘网站1</a></li>
-                <li><a href="" target="_blank">在线课程平台</a></li>
-                <li><a href="" target="_blank">简历模板下载</a></li>
-                <!-- 更多资源链接... -->
+    <div class="header">
+    <img src="img/04.jpg" title="校徽" alt="未成功加载">
+    <ul class="top">
+        <li class="nav-major dropdown">专业介绍
+            <ul class="major drop">
+                <li><a href="nefu/major">专业简介</a></li>
+                <li><a href="nefu/direction">方向简介</a></li>
+                <li><a href="nefu/grade">分数线</a></li>
             </ul>
-            <!-- 资源链接列表 -->
-        </div>
+        </li>
+        <li class="nav-lab  dropdown">实验室介绍
+            <ul class="lab drop">
+                <li><a href="nefu/lab?id=921">921实验室</a></li>
+                <li><a href="nefu/lab?id=923">923创新实验室</a></li>
+                <li><a href="nefu/lab?id=925">925移动开发实验室</a></li>
+            </ul>
+        </li>
+        <li class="nav-teacher  dropdown">教师队伍
+            <ul class="teacher drop">
+                <li><a href="nefu/listteachers?title=PROFESSOR">教授</a></li>
+                <li><a href="nefu/listteachers?title=ASSPRO">副教授</a></li>
+                <li><a href="nefu/listteachers?title=LECTURE">讲师</a></li>
+            </ul>
+        </li>
+        <li class="nav-work  dropdown">就业指南
+            <ul class="work drop">
+                <li><a href="nefu/work">就业方向</a></li>
+                <li><a href="nefu/money">薪资待遇</a></li>
+            </ul>
+        </li>
+        <li class="search">
+            <input type="text" placeholder="请输入关键词">
+            <img src="img/search.png" alt="">
+        </li>
+    </ul>
+    <div class="top-right">
+        <a href="nefu/login">切换账号</a>
+        <a href="nefu/register">注册</a>
     </div>
-    <div class="footer" >
-        <p>如果您有任何疑问或需要进一步的帮助，请通过以下方式联系我们：</p>
-        <div class="address" >
-            电子邮件: <a href="mailto:info@careerguide.com">info@careerguide.com</a><br>
-            电话: 123-456-7890<br>
-            地址: 示例街道123号, 示例城市
-        </div>
+</div>
+    <div class="content">
+            <div class="section">
+                <h2>软件开发</h2>
+                <p>软件开发是一个广泛的领域，涵盖了从应用程序开发到系统软件开发的各个方面。以下是一些主要的就业方向：</p>
+                <ul>
+                    <li>前端开发工程师</li>
+                    <li>后端开发工程师</li>
+                    <li>全栈开发工程师</li>
+                    <li>移动应用开发工程师</li>
+                </ul>
 
+            </div>
+
+            <div class="section">
+                <h2>数据科学</h2>
+                <p>数据科学是一个跨学科领域，涉及统计学、计算机科学和领域知识。以下是一些主要的就业方向：</p>
+                <ul>
+                    <li>数据分析师</li>
+                    <li>数据科学家</li>
+                    <li>机器学习工程师</li>
+                    <li>大数据工程师</li>
+                </ul>
+
+            </div>
+
+            <div class="section">
+                <h2>网络安全</h2>
+                <p>网络安全是保护计算机系统和网络免受信息泄露、盗窃或损坏的实践。以下是一些主要的就业方向：</p>
+                <ul>
+                    <li>网络安全分析师</li>
+                    <li>信息安全工程师</li>
+                    <li>安全顾问</li>
+                    <li>渗透测试工程师</li>
+                </ul>
+
+            </div>
+
+            <div class="section">
+                <h2>就业方向对比</h2>
+                <p>以下表格对比了不同就业方向的平均薪资和发展前景：</p>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>就业方向</th>
+                        <th>平均薪资（年）</th>
+                        <th>发展前景</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>前端开发工程师</td>
+                        <td>¥150,000</td>
+                        <td>高</td>
+                    </tr>
+                    <tr>
+                        <td>数据科学家</td>
+                        <td>¥200,000</td>
+                        <td>非常高</td>
+                    </tr>
+                    <tr>
+                        <td>网络安全分析师</td>
+                        <td>¥180,000</td>
+                        <td>高</td>
+                    </tr>
+                    <tr>
+                        <td>机器学习工程师</td>
+                        <td>¥220,000</td>
+                        <td>非常高</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>相关资源</h2>
+                <p>以下是一些有用的资源链接，帮助你更好地了解和准备这些就业方向：</p>
+                <ul>
+                    <li><a href="https://www.w3schools.com" target="_blank">W3Schools - Web Development Tutorials</a></li>
+                    <li><a href="https://www.coursera.org" target="_blank">Coursera - Online Courses</a></li>
+                    <li><a href="https://www.kaggle.com" target="_blank">Kaggle - Data Science Competitions</a></li>
+                    <li><a href="https://www.cybrary.it" target="_blank">Cybrary - Cyber Security Training</a></li>
+                </ul>
+            </div>
+    </div>
+    <div class="footer col-md-12">
+        <p>&copy; 2024 东北林业大学 All Rights Reserved.</p>
     </div>
 </div>
 </body>

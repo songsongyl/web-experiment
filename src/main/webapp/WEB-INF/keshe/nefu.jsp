@@ -213,9 +213,9 @@
         <ul class="top">
             <li class="nav-major dropdown">专业介绍
                 <ul class="major drop">
-                    <li><a href="">专业简介</a></li>
-                    <li><a href="">方向简介</a></li>
-                    <li><a href="">分数线</a></li>
+                    <li><a href="nefu/major">专业简介</a></li>
+                    <li><a href="nefu/direction">方向简介</a></li>
+                    <li><a href="nefu/grade">分数线</a></li>
                 </ul>
             </li>
             <li class="nav-lab  dropdown">实验室介绍
@@ -234,9 +234,8 @@
             </li>
             <li class="nav-work  dropdown">就业指南
                 <ul class="work drop">
-                    <li><a href="">就业方向</a></li>
-                    <li><a href="">薪资待遇</a></li>
-                    <li><a href="">面试指导</a></li>
+                    <li><a href="nefu/work">就业方向</a></li>
+                    <li><a href="nefu/money">薪资待遇</a></li>
                 </ul>
             </li>
             <li class="search">
@@ -274,7 +273,6 @@
         </div>
     </div>
     <div id="footer" class="col-md-12">
-<%--        <%@include file="footer.jsp "%>--%>
     <p>&copy; 2024 东北林业大学 All Rights Reserved.</p>
     </div>
 </div>

@@ -65,6 +65,10 @@
             left: 0;
             background-color: royalblue;
         }
+        .top li.nav-home a{
+            color: white;
+            font-size: 20px;
+        }
         .drop a:hover {
             color: #ffec99;
         }
@@ -179,6 +183,7 @@
     <div class="header">
         <img src="img/04.jpg" title="校徽" alt="未成功加载">
         <ul class="top">
+            <li class="nav-home dropdown"><a href="nefu">首页</a></li>
             <li class="nav-major dropdown">专业介绍
                 <ul class="major drop">
                     <li><a href="nefu/major">专业简介</a></li>

@@ -1,5 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<jsp:useBean id="newsList" scope="request" type="java.util.List<com.kesheExample.entity.News>"/>
+<%--<jsp:useBean id="admin" scope="request" type="com.kesheExample.entity.Admin"/>--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +9,7 @@
     <title>Title</title>
     <c:url var="base" value="/"/>
     <base href="${base}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         *{
             padding: 0;
@@ -63,6 +66,10 @@
             top: 100%;
             left: 0;
             background-color: royalblue;
+        }
+        .nav-home a{
+           color: white;
+            font-size: 1.1em;
         }
         .drop a:hover {
             color: #ffec99;
@@ -168,6 +175,64 @@
             text-align: center;
             padding: 5px;
         }
+         .material-icons {
+            color: #007BFF;
+            margin-right: 10px;
+            vertical-align: middle;
+             padding-top: 6px;
+        }
+         .news .manage {
+             text-decoration: none;
+             margin-left: 250px;
+             color: red;
+             /*background-color: #03a9f4;*/
+             width: 15px;
+         }
+        .news h3 , .notice h3{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .news-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .news-item {
+            /*background: #fff;*/
+            border-bottom: 1px solid #eee;
+            padding: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-link {
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .news-title {
+            font-size: 13px;
+            color: #5290d3;
+        }
+
+        .news-date {
+            font-size: 10px;
+            color: #888;
+        }
+
+        .news-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .news-item:hover .news-title {
+            color: #007bff;
+        }
 
         .notice {
             /*border: 1px solid darkcyan;*/
@@ -194,6 +259,7 @@
         <img src="img/04.jpg" title="校徽" alt="未成功加载">
 <%--        啊啊啊啊，改了好久，最终幡然醒悟，应该加个部署路径--%>
         <ul class="top">
+            <li class="nav-home dropdown"><a href="nefu">首页</a></li>
             <li class="nav-major dropdown">专业介绍
                 <ul class="major drop">
                     <li><a href="nefu/major">专业简介</a></li>
@@ -245,16 +311,28 @@
     </div>
     <div class="foot col-md-12">
         <div class="news col-md-6">
-            <h3>每日新闻</h3>
-            <ul>
-                <li><a href="nefu/news?id=1"></a></li>
-                <li><a href="nefu/news?id=2"></a></li>
-                <li><a href="nefu/news?id=3"></a></li>
-                <li><a href="nefu/news?id=4"></a></li>
-                <li><a href="nefu/news?id=5"></a></li>
+            <i class="material-icons">article</i>
+            <h3 >每日新闻</h3>
+
+            <c:if test="${admin !=null}">
+                <a class="manage" href="nefu/newsmanage">后台管理</a>
+            </c:if>
+            <ul class="news-list">
+                <c:forEach var="news" items="${newsList}">
+                    <li class="news-item">
+                        <a  class="news-link" href="nefu/newsdetail?id=${news.id}"><span class="news-title">${news.title}</span>
+                            <span class="news-date">${news.publishDate}</span></a>
+                    </li>
+                </c:forEach>
+<%--                <li><a href="nefu/news?id=1">生态学院正式成立</a></li>--%>
+<%--                <li><a href="nefu/news?id=2">学校召开“时代新人铸魂工程”工作推进会</a></li>--%>
+<%--                <li><a href="nefu/news?id=3">宋文龙带队赴哈尔滨联通公司开展校企合作交流调研</a></li>--%>
+<%--                <li><a href="nefu/news?id=4">科学技术研究院组织召开森林食品、药品创新研发战略布局研讨会</a></li>--%>
+<%--                <li><a href="nefu/news?id=5">我校学子在第十五届“蓝桥杯”全国软件和信息技术专业人才大赛中再创佳绩</a></li>--%>
             </ul>
         </div>
         <div class="notice col-md-6">
+            <i class="material-icons">circle_notifications</i>
             <h3>每日公告</h3>
 
         </div>

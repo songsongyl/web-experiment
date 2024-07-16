@@ -19,6 +19,12 @@ public class News {
         this.publishDate = publishDate;
         this.imgUrl = imgUrl;
     }
+    public News(String title, String content, String author, LocalDateTime publishDate) {
+        this.title = title;
+        this.content = content;
+        this.author = author;
+        this.publishDate = publishDate;
+    }
 
     public int getId() {
         return id;

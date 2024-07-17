@@ -48,25 +48,29 @@ public class NewsDetailServlet extends HttpServlet {
         req.getRequestDispatcher("/WEB-INF/keshe/newsdetail.jsp").forward(req, resp);
     }
 
-//    @Override
-//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        try {
-//            String idParam = req.getParameter("id");
-//            if (idParam == null || idParam.trim().isEmpty()) {
-//                resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "新闻ID不能为空。");
-//                return;
-//            }
-//            int newsId = Integer.parseInt(idParam); // 处理转换异常
-//            // 根据 newsId 查询新闻
-//            News news = newsService.getNewsById(newsId);
-//            if (news == null) {
-//                resp.sendError(HttpServletResponse.SC_NOT_FOUND, "未找到指定的新闻。");
-//                return;
-//            }
-//            req.setAttribute("news", news);
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            String idParam = req.getParameter("id");
+            if (idParam == null || idParam.trim().isEmpty()) {
+                resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "新闻ID不能为空。");
+                return;
+            }
+            int newsId = Integer.parseInt(idParam); // 处理转换异常
+            // 根据 newsId 查询新闻
+            News news = newsService.getNewsById(newsId);
+            if (news == null) {
+                resp.sendError(HttpServletResponse.SC_NOT_FOUND, "未找到指定的新闻。");
+                return;
+            }
+            req.setAttribute("news", news);
+            List<News> newsList = newsService.getAllNews();
+            req.setAttribute("newsList", newsList);
+            req.getRequestDispatcher("/WEB-INF/keshe/newsdetail.jsp").forward(req, resp);
 //            resp.sendRedirect(req.getContextPath() + "/nefu/newsdetail");
-//        } catch (NumberFormatException e) {
-//            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "无效的新闻ID格式。");
-//        }
 
+        } catch (NumberFormatException e) {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "无效的新闻ID格式。");
+        }
+    }
 }

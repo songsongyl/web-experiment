@@ -7,6 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <title>新闻详情</title>
+    <c:url var="base" value="/"/>
+    <base href="${base}">
     <style>
     *{
         padding: 0;
@@ -274,15 +276,13 @@
 
     }
 
-    @media (max-width: 840px) {
+    @media (max-width: 880px) {
         .search {
             display: none;
         }
 
     }
     </style>
-    <c:url var="base" value="/"/>
-    <base href="${base}">
 </head>
 <body>
 <div class="container">
@@ -341,15 +341,15 @@
     </div>
     <div class="sidebar">
         <h3>推荐新闻</h3>
-<%--        <form id="form" action="nefu/newsdetail" method="post">--%>
-<%--        </form>--%>
+        <form id="form" action="nefu/newsdetail" method="post">
+        </form>
         <ul class="recommendations">
                 <c:if test="${not empty newsList}">
                     <c:forEach items="${newsList}" var="n">
                         <c:if test="${n.id != news.id}">
                             <li>
-                                    ${n.title}
-<%--                                <button class="other" type="button" onclick="otherNews(${n.id})">${n.title}</button>--%>
+<%--                                    ${n.title}--%>
+                                <button class="other" type="button" onclick="otherNews(${n.id})">${n.title}</button>
                             </li>
                         </c:if>
                     </c:forEach>
@@ -362,22 +362,22 @@
 </div>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
-    // function otherNews(newsId) {
-    // if (confirm('确认要查询这条新闻吗？')) {
-    //     var form = document.getElementById('form'); // 获取表单
-    //     if (form) {
-    //         // 创建一个隐藏的input元素，用于提交新闻ID
-    //         var hiddenInput = document.createElement('input');
-    //         hiddenInput.type = 'hidden';
-    //         hiddenInput.name = 'id';
-    //         hiddenInput.value = newsId;
-    //         form.appendChild(hiddenInput);
-    //         // 提交表单
-    //         form.submit();
-    //     } else {
-    //         console.error('表单元素未找到');
-    //     }
-    // }}
+    function otherNews(newsId) {
+    if (confirm('确认要查询这条新闻吗？')) {
+        var form = document.getElementById('form'); // 获取表单
+        if (form) {
+            // 创建一个隐藏的input元素，用于提交新闻ID
+            var hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'id';
+            hiddenInput.value = newsId;
+            form.appendChild(hiddenInput);
+            // 提交表单
+            form.submit();
+        } else {
+            console.error('表单元素未找到');
+        }
+    }}
 </script>
 </body>
 </html>

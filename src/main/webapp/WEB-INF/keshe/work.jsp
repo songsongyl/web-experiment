@@ -217,7 +217,7 @@
 
         }
 
-        @media (max-width: 840px) {
+        @media (max-width: 880px) {
             .search {
                 display: none;
             }

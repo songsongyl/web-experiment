@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>专业简介</title>
     <c:url var="base" value="/"/>
     <base href="${base}">
     <style>
@@ -189,7 +189,7 @@
 
         }
 
-        @media (max-width: 840px) {
+        @media (max-width:880px) {
             .search {
                 display: none;
             }

@@ -13,9 +13,9 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebFilter("/nefu/*")
+//@WebFilter("/nefu/*")
 public class Filter extends HttpFilter {
-    private List<String> excludes = List.of("/nefu/login","/nefu/register");
+    private List<String> excludes = List.of("/nefu/login","/nefu/register","/nefu");
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
 

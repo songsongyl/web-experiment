@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>首页</title>
     <c:url var="base" value="/"/>
     <base href="${base}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -290,7 +290,7 @@
 
         }
 
-        @media (max-width: 840px) {
+        @media (max-width: 880px) {
             .search {
                 display: none;
             }

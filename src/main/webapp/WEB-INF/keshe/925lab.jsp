@@ -238,7 +238,7 @@
 
         }
 
-        @media (max-width: 840px) {
+        @media (max-width:880px) {
             .search {
                 display: none;
             }
@@ -302,7 +302,7 @@
         <h2>关于我们</h2>
         <p>我们的实验室专注于前沿科学技术的研究和创新，致力于推动科学进步和社会发展。</p>
         <button class=" button img">点击显示图片</button>
-        <img src="img/lab.jpg" alt="">
+        <img src="img/lab.png" alt="">
     </div>
 
     <div id="research ">

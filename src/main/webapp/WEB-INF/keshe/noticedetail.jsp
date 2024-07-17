@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>新闻详情</title>
+    <title>公告详情</title>
     <style>
         *{
             padding: 0;
@@ -212,7 +212,7 @@
 
         }
 
-        @media (max-width: 840px) {
+        @media (max-width: 880px) {
             .search {
                 display: none;
             }

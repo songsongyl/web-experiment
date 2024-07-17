@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>注册</title>
     <c:url var="base" value="/"/>
     <base href="${base}">
     <style>

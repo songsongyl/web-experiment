@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>分数线</title>
     <c:url var="base" value="/"/>
     <base href="${base}">
     <style>
@@ -152,6 +152,11 @@
             margin: 10px;
             text-decoration: none;
         }
+        .content h2 {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
         .content table{
             margin-top: 50px;
             width: 100%;
@@ -189,7 +194,7 @@
 
         }
 
-        @media (max-width: 840px) {
+        @media (max-width: 880px) {
             .search {
                 display: none;
             }
@@ -242,6 +247,7 @@
 
     </div>
     <div class="content">
+        <h2>分数线</h2>
         <table>
             <thead>
             <tr>

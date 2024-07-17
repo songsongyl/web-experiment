@@ -1,7 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <jsp:useBean id="newsList" scope="request" type="java.util.List<com.kesheExample.entity.News>"/>
-<%--<jsp:useBean id="admin" scope="request" type="com.kesheExample.entity.Admin"/>--%>
+<jsp:useBean id="noticesList" scope="request" type="java.util.List<com.kesheExample.entity.Notice>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +10,7 @@
     <c:url var="base" value="/"/>
     <base href="${base}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         *{
             padding: 0;
@@ -27,11 +28,13 @@
             position: relative;
             z-index: 1;
             display: flex;
+            height: 70px;
         }
         .header img {
             /*border: 1px solid red;*/
             width: 6%;
-            height: 66.84px;
+            height: 100%;
+            /*height: 66.84px;*/
             color:  darkcyan;
             /*display: flex;*/
             /*filter: hue-rotate(120deg);*/
@@ -39,18 +42,24 @@
         .header .top {
             list-style: none;
             display: flex;
+            align-items: center;
+            flex-direction: row;
+            /*flex-wrap: wrap;*/
             /*position: absolute;*/
             /*top:12px;*/
             /*left: 100px;*/
-
         }
-        .top li {
+        .top li:not(.search){
             padding: 10px;
             /*margin: auto;*/
             color: white;
             font-size: 1.2em;
             margin-top: 10px;
+            position: relative;
+            white-space: nowrap;
+            flex-shrink: 1;
         }
+
         .top li:not(.search):hover {
             background-color: cornflowerblue;
             color: #f08c00;
@@ -66,6 +75,8 @@
             top: 100%;
             left: 0;
             background-color: royalblue;
+            white-space: nowrap;
+            min-width: 150px;
         }
         .nav-home a{
            color: white;
@@ -79,58 +90,73 @@
             text-decoration: none;
             font-size: 0.7em;
         }
-        .dropdown {
-            position: relative;
-        }
+        /*.dropdown {*/
+        /*    position: relative;*/
+        /*}*/
         .dropdown:hover .drop{
             display: block;
             color: #f08c00;
         }
         .header .search {
-            display: flex;
             position: relative;
             z-index: 1;
-            margin-left: 80px;
-            margin-top: 8px;
+            width: 100%;
+            max-width: 450px;
+            /*height: 40px; */
+            margin: 20px auto;
+            /*padding: 10px;*/
+            /*margin: auto;*/
         }
+
         .search input {
             border-radius: 15px;
-            width: 450px;
+            width: 100%;
             height: 30px;
             background-color: white;
             border: 1px solid cornflowerblue;
             outline: none;
+            padding: 0 30px 0 15px; /* 留出空间给搜索图标和右边的搜索按钮 */
+            /*box-sizing: border-box; !* 边框计算在宽度内 *!*/
         }
+
         .search input::placeholder {
             font-size: 14px;
             color: #999;
         }
 
-        .search img {
-            align-self: center;
-            width: 20px;
+        .searchImg {
+            width: 10px;
             height: 15px;
             position: absolute;
-            left: 430px;
+            top: 50%;
+            right: 10px;
             z-index: 2;
+            transform: translateY(-50%); /* 垂直居中 */
         }
 
         .top-right {
             margin-left: 100px;
+            display: flex;
+            justify-content: flex-end; /* 将按钮排列到容器的右侧 */
+            align-items: center;
+            /*margin-top: 15px;*/
+            text-align: center;
         }
         .top-right input{
             width: 50px;
             height: 30px;
             border-radius: 10px;
             background-color: palevioletred;
-            margin-top: 15px;
+            /*margin-top: 15px;*/
             /*outline: none;*/
             border: none;
             padding: 5px;
-            margin-right: 10px;
+            margin-right: 25px;
+            cursor: pointer;
         }
         .top-right input.toggle_account{
             width: 70px;
+            margin-right: 15px;
         }
         .content {
             width: 100%;
@@ -161,6 +187,7 @@
         .toggle button {
             width: 20px;
             height: 20px;
+            cursor: pointer;
         }
 
         .foot {
@@ -181,7 +208,7 @@
             vertical-align: middle;
              padding-top: 6px;
         }
-         .news .manage {
+         .news .manage ,.notice .manage {
              text-decoration: none;
              margin-left: 250px;
              color: red;
@@ -192,23 +219,23 @@
             display: inline-block;
             vertical-align: middle;
         }
-        .news-list {
+        .news-list ,.notice-list{
             list-style: none;
             padding: 0;
         }
 
-        .news-item {
+        .news-item , .notice-item{
             /*background: #fff;*/
             border-bottom: 1px solid #eee;
             padding: 15px;
             transition: background-color 0.3s ease;
         }
 
-        .news-item:last-child {
+        .news-item:last-child , .notice-item:last-child{
             border-bottom: none;
         }
 
-        .news-link {
+        .news-link , .notice-link{
             text-decoration: none;
             color: #333;
             display: flex;
@@ -216,21 +243,21 @@
             align-items: center;
         }
 
-        .news-title {
+        .news-title , .notice-title{
             font-size: 13px;
             color: #5290d3;
         }
 
-        .news-date {
+        .news-date , .notice-date{
             font-size: 10px;
             color: #888;
         }
 
-        .news-item:hover {
+        .news-item:hover, .notice-item:hover {
             background-color: #f9f9f9;
         }
 
-        .news-item:hover .news-title {
+        .news-item:hover .news-title ,.notice-item:hover .notice-title {
             color: #007bff;
         }
 
@@ -240,16 +267,35 @@
             text-align: center;
             padding: 5px;
         }
+
         #footer {
             background-color: darkcyan;
             color: white;
             text-align: center;
             padding: 2px 0;
             position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             bottom: 0;
         }
         .col-md-6 {width: 50%;}
         .col-md-12 {width: 100%;}
+
+
+        @media (max-width: 700px) {
+            .top-right  {
+                display: none;
+            }
+
+        }
+
+        @media (max-width: 840px) {
+            .search {
+                display: none;
+            }
+
+        }
     </style>
 </head>
 <body>
@@ -287,11 +333,11 @@
                     <li><a href="nefu/money">薪资待遇</a></li>
                 </ul>
             </li>
-            <li class="search">
-                <input type="text" placeholder="请输入关键词">
-                <img src="img/search.png" alt="">
-            </li>
         </ul>
+        <div class="search">
+            <input type="text" placeholder="请输入关键词">
+            <img class="searchImg" src="img/search.png" alt="">
+        </div>
         <div class="top-right">
             <a href="nefu/login"> <input type="button" class="toggle_account" value="切换账号"></a>
             <a href="nefu/register"> <input type="button" value="注册"></a>
@@ -313,16 +359,18 @@
         <div class="news col-md-6">
             <i class="material-icons">article</i>
             <h3 >每日新闻</h3>
-
             <c:if test="${admin !=null}">
                 <a class="manage" href="nefu/newsmanage">后台管理</a>
             </c:if>
             <ul class="news-list">
                 <c:forEach var="news" items="${newsList}">
-                    <li class="news-item">
-                        <a  class="news-link" href="nefu/newsdetail?id=${news.id}"><span class="news-title">${news.title}</span>
-                            <span class="news-date">${news.publishDate}</span></a>
-                    </li>
+                    <c:if test="${news.id<=5}">
+                        <li class="news-item">
+                            <a  class="news-link" href="nefu/newsdetail?id=${news.id}"><span class="news-title">${news.title}</span>
+                                <span class="news-date">${news.publishDate}</span></a>
+                        </li>
+                    </c:if>
+
                 </c:forEach>
 <%--                <li><a href="nefu/news?id=1">生态学院正式成立</a></li>--%>
 <%--                <li><a href="nefu/news?id=2">学校召开“时代新人铸魂工程”工作推进会</a></li>--%>
@@ -334,7 +382,19 @@
         <div class="notice col-md-6">
             <i class="material-icons">circle_notifications</i>
             <h3>每日公告</h3>
+            <c:if test="${admin !=null}">
+                <a class="manage" href="nefu/noticesmanage">后台管理</a>
+            </c:if>
+            <ul class="notice-list">
+                <c:forEach var="notice" items="${noticesList}">
+                <c:if test="${notice.id<=5}">
+                    <li class="notice-item">
+                        <a  class="notice-link" href="nefu/noticedetail?id=${notice.id}"><span class="notice-title">${notice.title}</span>
+                            <span class="notice-date">${notice.publishTime}</span></a>
+                    </li>
+                </c:if>
 
+                </c:forEach>
         </div>
     </div>
     <div id="footer" class="col-md-12">

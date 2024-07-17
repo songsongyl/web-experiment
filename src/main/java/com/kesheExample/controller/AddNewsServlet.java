@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -30,19 +31,22 @@ public class AddNewsServlet extends HttpServlet {
             String author = req.getParameter("author");
             String content = req.getParameter("content");
             String url = req.getParameter("url");
-            LocalDateTime time = LocalDateTime.parse(req.getParameter("time"), DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            Date time = Date.valueOf(req.getParameter("time"));
             if ( idStr ==null ||title == null || title.trim().isEmpty() || author == null || author.trim().isEmpty() ||
                     content == null || content.trim().isEmpty() || time == null ) {
                 throw new IllegalArgumentException("所有字段都是必填项。");
             }
             int id = Integer.parseInt(idStr);
-            News news = new News(id,title, content, author, time,url);
+            News news;
+            if(url !=  null){
+                 news = new News(id,title, content, author, time,url);
+            }else {
+                news = new News(id,title, content, author, time);
+            }
             newsService.addNews(news);
             resp.sendRedirect(req.getContextPath() + "/nefu/newsmanage");
-        } catch (DateTimeParseException e) {
-            // 日期时间格式错误处理
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "日期时间格式不正确。");
-        } catch (IllegalArgumentException e) {
+        }
+         catch (IllegalArgumentException e) {
             // 参数验证错误处理
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
         }

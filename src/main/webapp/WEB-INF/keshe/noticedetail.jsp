@@ -1,21 +1,25 @@
+<jsp:useBean id="notice" scope="request" type="com.kesheExample.entity.Notice"/>
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<jsp:useBean id="newsList" scope="request" type="java.util.List<com.kesheExample.entity.News>"/>
+<jsp:useBean id="noticesList" scope="request" type="java.util.List<com.kesheExample.entity.Notice>"/>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <c:url var="base" value="/"/>
-    <base href="${base}">
+    <title>新闻详情</title>
     <style>
         *{
             padding: 0;
             margin: 0;
             box-sizing: border-box;
-
         }
-
+        .container {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            /*display: flex;*/
+            /*justify-content: center;*/
+            /*align-items: flex-start;*/
+        }
         .header {
             /*border: 1px solid red;*/
             width: 100%;
@@ -154,31 +158,42 @@
             margin: 10px;
             text-decoration: none;
         }
-        table {
-            margin-top: 50px;
+        .notice-detail {
+            margin-top: 100px;
+            background: #fff;
             width: 100%;
-            border-collapse: collapse;
-        }
-        table th ,table td {
-            padding: 10px;
-            text-align: center;
-            border-bottom: 1px solid gray;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        tbody tr:nth-child(odd) {
-            background-color: pink;
+        .notice-header {
+            text-align: center;
         }
-        tbody tr:nth-child(even) {
-            background-color: #e0a800;
+
+        .notice-title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
         }
-        .btn {
-            background-color: darkred;
-            border-radius: 8px;
-            color: whitesmoke;
-            text-decoration: none;
-            padding: 3px 5px;
-            display: inline-block;
+
+        .notice-meta {
+            font-size: 0.9em;
+            color: #e0a800;
+            margin-bottom: 30px;
         }
+
+        .notice-content {
+            margin-bottom: 20px;
+        }
+
+        /*.news-content p {*/
+        /*    line-height: 1.6;*/
+        /*    font-size: 1em;*/
+        /*    color: #333;*/
+        /*}*/
+
+
         .footer {
             background-color: darkcyan;
             color: white;
@@ -188,6 +203,7 @@
             bottom: 0;
         }
 
+        .col-md-6 {width: 50%;}
         .col-md-12 {width: 100%;}
         @media (max-width: 700px) {
             .top-right  {
@@ -203,6 +219,8 @@
 
         }
     </style>
+    <c:url var="base" value="/"/>
+    <base href="${base}">
 </head>
 <body>
 <div class="container">
@@ -244,27 +262,22 @@
         </div>
         <div class="top-right">
             <a href="nefu/login">切换账号</a>
-            <a href="nefu/register"> 注册</a>
+            <a href="nefu/register">注册</a>
         </div>
-
     </div>
-    <table>
-        <tr>
-            <th>序号</th>
-            <th>标题</th>
-            <th>操作</th>
-        </tr>
-        <c:forEach items="${newsList}" var="news">
-            <tr>
-                <td>${news.id}</td>
-                <td>${news.title}</td>
-                <td><a class="btn" href="nefu/newsdetail?id=${news.id}">详细</a></td>
-            </tr>
-        </c:forEach>
-    </table>
+    <div class="notice-detail">
+        <div class="notice-header">
+            <h1 class="notice-title">${notice.title}</h1>
+            <p class="notice-meta">发布日期: ${notice.publishTime}</p>
+        </div>
+        <div class="notice-content">
+            <p>${notice.content}</p>
+        </div>
+    </div>
     <div class="footer col-md-12">
         <p>&copy; 2024 东北林业大学 All Rights Reserved.</p>
     </div>
 </div>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>
 </html>

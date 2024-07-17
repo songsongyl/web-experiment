@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<jsp:useBean id="newsList" scope="request" type="java.util.List<com.kesheExample.entity.News>"/>
+<jsp:useBean id="noticesList" scope="request" type="java.util.List<com.kesheExample.entity.Notice>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,6 @@
             box-sizing: border-box;
 
         }
-
         .header {
             /*border: 1px solid red;*/
             width: 100%;
@@ -254,11 +253,11 @@
             <th>标题</th>
             <th>操作</th>
         </tr>
-        <c:forEach items="${newsList}" var="news">
+        <c:forEach items="${noticesList}" var="notice">
             <tr>
-                <td>${news.id}</td>
-                <td>${news.title}</td>
-                <td><a class="btn" href="nefu/newsdetail?id=${news.id}">详细</a></td>
+                <td>${notice.id}</td>
+                <td>${notice.title}</td>
+                <td><a class="btn" href="nefu/noticedetail?id=${notice.id}">详细</a></td>
             </tr>
         </c:forEach>
     </table>

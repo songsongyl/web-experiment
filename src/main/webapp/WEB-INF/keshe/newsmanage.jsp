@@ -34,6 +34,7 @@
             /*border: 1px solid red;*/
             width: 6%;
             height: 100%;
+            /*height: 66.84px;*/
             color:  darkcyan;
             /*display: flex;*/
             /*filter: hue-rotate(120deg);*/
@@ -41,18 +42,24 @@
         .header .top {
             list-style: none;
             display: flex;
+            align-items: center;
+            flex-direction: row;
+            /*flex-wrap: wrap;*/
             /*position: absolute;*/
             /*top:12px;*/
             /*left: 100px;*/
-
         }
-        .top li {
+        .top li:not(.search){
             padding: 10px;
             /*margin: auto;*/
             color: white;
             font-size: 1.2em;
             margin-top: 10px;
+            position: relative;
+            white-space: nowrap;
+            flex-shrink: 1;
         }
+
         .top li:not(.search):hover {
             background-color: cornflowerblue;
             color: #f08c00;
@@ -68,10 +75,12 @@
             top: 100%;
             left: 0;
             background-color: royalblue;
+            white-space: nowrap;
+            min-width: 150px;
         }
-        .top li.nav-home a{
+        .nav-home a{
             color: white;
-            font-size: 20px;
+            font-size: 1.1em;
         }
         .drop a:hover {
             color: #ffec99;
@@ -81,49 +90,61 @@
             text-decoration: none;
             font-size: 0.7em;
         }
-        .dropdown {
-            position: relative;
-            display: flex;
-        }
+        /*.dropdown {*/
+        /*    position: relative;*/
+        /*}*/
         .dropdown:hover .drop{
             display: block;
             color: #f08c00;
         }
         .header .search {
-            display: flex;
             position: relative;
             z-index: 1;
-            margin-left: 80px;
-            margin-top: 8px;
+            width: 100%;
+            max-width: 450px;
+            /*height: 40px; */
+            margin: 20px auto;
+            /*padding: 10px;*/
+            /*margin: auto;*/
         }
+
         .search input {
             border-radius: 15px;
-            width: 450px;
+            width: 100%;
             height: 30px;
             background-color: white;
             border: 1px solid cornflowerblue;
             outline: none;
+            padding: 0 30px 0 15px; /* 留出空间给搜索图标和右边的搜索按钮 */
+            /*box-sizing: border-box; !* 边框计算在宽度内 *!*/
         }
+
         .search input::placeholder {
             font-size: 14px;
             color: #999;
         }
 
-        .search img {
-            align-self: center;
-            width: 20px;
+        .searchImg {
+            width: 10px;
             height: 15px;
             position: absolute;
-            left: 430px;
+            top: 50%;
+            right: 10px;
             z-index: 2;
+            transform: translateY(-50%); /* 垂直居中 */
         }
 
         .top-right {
-            margin-left: 30px;
+            margin-left: 100px;
             /*margin-top: 15px;*/
-            /*outline: none;*/
+            outline: none;
             border: none;
             padding: 5px;
+            display: flex;
+            justify-content: flex-end; /* 将按钮排列到容器的右侧 */
+            align-items: center;
+            /*margin-top: 15px;*/
+            text-align: center;
             /*margin-right: 10px;*/
         }
         .top-right a {
@@ -135,7 +156,9 @@
             padding: 3px;
             text-align: center;
             margin: 10px;
+            text-decoration: none;
         }
+
         .content {
             padding: 50px;
             text-align: center;
@@ -200,18 +223,21 @@
             position: fixed;
             bottom: 0;
         }
-        .col-md-1 {width: 8.33%;}
-        .col-md-2 {width: 16.67%;}
-        .col-md-3 {width: 25%;}
-        .col-md-4 {width: 33.33%;}
-        .col-md-5 {width: 41.67%;}
-        .col-md-6 {width: 50%;}
-        .col-md-7 {width: 58.33%;}
-        .col-md-8 {width: 66.67%;}
-        .col-md-9 {width: 75%;}
-        .col-md-10 {width: 83.33%;}
-        .col-md-11 {width: 91.67%;}
+
         .col-md-12 {width: 100%;}
+        @media (max-width: 700px) {
+            .top-right  {
+                display: none;
+            }
+
+        }
+
+        @media (max-width: 840px) {
+            .search {
+                display: none;
+            }
+
+        }
     </style>
 </head>
 <body>
@@ -246,11 +272,11 @@
                     <li><a href="nefu/money">薪资待遇</a></li>
                 </ul>
             </li>
-            <li class="search">
-                <input type="text" placeholder="请输入关键词">
-                <img src="img/search.png" alt="">
-            </li>
         </ul>
+        <div class="search">
+            <input type="text" placeholder="请输入关键词">
+            <img class="searchImg" src="img/search.png" alt="">
+        </div>
         <div class="top-right">
             <a href="nefu/login">切换账号</a>
             <a href="nefu/register">注册</a>

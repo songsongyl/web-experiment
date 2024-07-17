@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<jsp:useBean id="newsList" scope="request" type="java.util.List<com.kesheExample.entity.News>"/>
+<jsp:useBean id="noticesList" scope="request" type="java.util.List<com.kesheExample.entity.Notice>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -154,30 +154,45 @@
             margin: 10px;
             text-decoration: none;
         }
-        table {
-            margin-top: 50px;
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table th ,table td {
-            padding: 10px;
-            text-align: center;
-            border-bottom: 1px solid gray;
+        .content {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
 
-        tbody tr:nth-child(odd) {
-            background-color: pink;
+        .content h3 {
+            color: #333;
         }
-        tbody tr:nth-child(even) {
-            background-color: #e0a800;
+
+        form {
+            display: flex;
+            flex-direction: column;
         }
-        .btn {
-            background-color: darkred;
-            border-radius: 8px;
-            color: whitesmoke;
-            text-decoration: none;
-            padding: 3px 5px;
-            display: inline-block;
+
+        label {
+            margin-top: 10px;
+        }
+
+        input[type="text"], select {
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
         }
         .footer {
             background-color: darkcyan;
@@ -244,27 +259,49 @@
         </div>
         <div class="top-right">
             <a href="nefu/login">切换账号</a>
-            <a href="nefu/register"> 注册</a>
+            <a href="nefu/register">注册</a>
         </div>
 
     </div>
-    <table>
-        <tr>
-            <th>序号</th>
-            <th>标题</th>
-            <th>操作</th>
-        </tr>
-        <c:forEach items="${newsList}" var="news">
-            <tr>
-                <td>${news.id}</td>
-                <td>${news.title}</td>
-                <td><a class="btn" href="nefu/newsdetail?id=${news.id}">详细</a></td>
-            </tr>
-        </c:forEach>
-    </table>
+    <div class="content">
+        <h3>更新公告</h3>
+        <form action="nefu/updatenotice" method="post">
+            <label for="noticeId">选择公告:</label>
+            <input type="text" list="noticeOptions" id="noticeId" name="noticeId">
+            <datalist id="noticeOptions">
+                <c:forEach items="${noticesList}" var="notice">
+                    <option value="${notice.id}">${notice.title}</option>
+                </c:forEach>
+            </datalist>
+
+            <!-- 更新字段的下拉选择 -->
+            <label for="updateFields">更新的字段:</label>
+            <select name="updateField" id="updateFields">
+                <option value="title">标题</option>
+                <option value="content">内容</option>
+            </select>
+            <!-- 更新的值 -->
+            <label for="updateValue">更新的值:</label>
+            <input type="text" name="updateValue" id="updateValue" required>
+            <!-- 提交按钮 -->
+            <button type="submit">提交更新</button>
+        </form>
+    </div>
     <div class="footer col-md-12">
         <p>&copy; 2024 东北林业大学 All Rights Reserved.</p>
     </div>
 </div>
+
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        var updateField = document.getElementById('updateField').value;
+        var updateValue = document.getElementById('updateValue').value;
+
+        if (!updateField || !updateValue) {
+            alert('请填写所有更新字段。');
+            event.preventDefault(); // 阻止表单提交
+        }
+    });
+</script>
 </body>
 </html>

@@ -98,6 +98,7 @@
             position: absolute;
             z-index: 2;
             padding: 5px;
+            border-radius: 10px;
         }
 
         .register-link:hover {
@@ -112,13 +113,13 @@
         <label>身份：
         <select name="identity">
 <%--            <option value=""></option>--%>
-            <option value="ADMIN">管理员</option>
-            <option value="USER" selected>普通用户</option>
+            <option value="ADMIN" selected>管理员</option>
+            <option value="USER" >普通用户</option>
         </select></label>
         <br>
-        <label>用户名：<input type="text" name="username"></label>
+        <label>用户名：<input type="text" name="username" value="admin"></label>
         <br>
-        <label>密码：<input type="password" name="password"></label>
+        <label>密码：<input type="password" name="password" value="admin"></label>
         <br>
         <button type="submit">登录</button>
     </form>

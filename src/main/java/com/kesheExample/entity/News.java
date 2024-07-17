@@ -1,17 +1,16 @@
 package com.kesheExample.entity;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
 
 public class News {
     private int id;
     private String title;
     private String content;
     private String author;
-    private LocalDateTime publishDate;
+    private Date publishDate;
     private String imgUrl;
 
-    public News(int id, String title, String content, String author, LocalDateTime publishDate,String imgUrl) {
+    public News(int id, String title, String content, String author, Date publishDate,String imgUrl) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -19,7 +18,8 @@ public class News {
         this.publishDate = publishDate;
         this.imgUrl = imgUrl;
     }
-    public News(String title, String content, String author, LocalDateTime publishDate) {
+    public News(int id,String title, String content, String author, Date publishDate) {
+        this.id = id;
         this.title = title;
         this.content = content;
         this.author = author;
@@ -58,11 +58,11 @@ public class News {
         this.author = author;
     }
 
-    public LocalDateTime getPublishDate() {
+    public Date getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(LocalDateTime publishDate) {
+    public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
     }
 

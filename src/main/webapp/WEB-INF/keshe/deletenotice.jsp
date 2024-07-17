@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<jsp:useBean id="newsList" scope="request" type="java.util.List<com.kesheExample.entity.News>"/>
+<jsp:useBean id="noticesList" scope="request" type="java.util.List<com.kesheExample.entity.Notice>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -130,6 +130,7 @@
             transform: translateY(-50%); /* 垂直居中 */
         }
 
+
         .top-right {
             margin-left: 100px;
             /*margin-top: 15px;*/
@@ -178,6 +179,7 @@
             text-decoration: none;
             padding: 3px 5px;
             display: inline-block;
+            outline: none;
         }
         .footer {
             background-color: darkcyan;
@@ -248,23 +250,41 @@
         </div>
 
     </div>
-    <table>
-        <tr>
-            <th>序号</th>
-            <th>标题</th>
-            <th>操作</th>
-        </tr>
-        <c:forEach items="${newsList}" var="news">
+    <form  id="deleteForm" action="nefu/deletenotice" method="post">
+        <table>
             <tr>
-                <td>${news.id}</td>
-                <td>${news.title}</td>
-                <td><a class="btn" href="nefu/newsdetail?id=${news.id}">详细</a></td>
+                <th>序号</th>
+                <th>标题</th>
+                <th>操作</th>
             </tr>
-        </c:forEach>
-    </table>
+
+            <c:forEach items="${noticesList}" var="notice">
+                <tr>
+                    <td>${notice.id}</td>
+                    <td>${notice.title}</td>
+                    <td><button class="btn" type="button" onclick="deleteNotice(${notice.id})">删除</button></td>
+                </tr>
+            </c:forEach>
+        </table>
+    </form>
     <div class="footer col-md-12">
         <p>&copy; 2024 东北林业大学 All Rights Reserved.</p>
     </div>
 </div>
+<script>
+    function deleteNotice(noticeId) {
+        if (confirm('确认要删除这条公告吗？')) {
+            var form = document.getElementById('deleteForm');
+            // 创建一个隐藏的input元素，用于提交公告ID
+            var hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'id';
+            hiddenInput.value = noticeId;
+            form.appendChild(hiddenInput);
+            // 提交表单
+            form.submit();
+        }
+    }
+</script>
 </body>
 </html>

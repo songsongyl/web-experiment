@@ -17,7 +17,7 @@ public class NewsService {
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
-                News news = new News(rs.getInt("id"),rs.getString("title"),rs.getString("content"),rs.getString("author"),rs.getObject("publish_time",LocalDateTime.class),rs.getString("img_url"));
+                News news = new News(rs.getInt("id"),rs.getString("title"),rs.getString("content"),rs.getString("author"),rs.getObject("publish_time",Date.class),rs.getString("img_url"));
                 newsList.add(news);
             }
         } catch (SQLException e) {
@@ -29,19 +29,35 @@ public class NewsService {
       return   getAllNews().stream().filter(news -> news.getId() == id).findFirst().orElse(null);
     }
     public void addNews(News news){
-        String sql = "insert into news(id, title, content, author,img_url, publish_time) values(?,?,?,?,?,?)";
-        try (Connection conn = DataSourceUtils.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)){
-            ps.setInt(1,news.getId());
-            ps.setString(2,news.getTitle());
-            ps.setString(3,news.getContent());
-            ps.setString(4,news.getAuthor());
-            ps.setString(5,news.getImgUrl());
-            ps.setTimestamp(6, Timestamp.valueOf(news.getPublishDate()));
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if(news.getImgUrl()!=null){
+            String sql = "insert into news(id, title, content, author,img_url, publish_time) values(?,?,?,?,?,?)";
+            try (Connection conn = DataSourceUtils.getConnection();
+                 PreparedStatement ps = conn.prepareStatement(sql)){
+                ps.setInt(1,news.getId());
+                ps.setString(2,news.getTitle());
+                ps.setString(3,news.getContent());
+                ps.setString(4,news.getAuthor());
+                ps.setString(5,news.getImgUrl());
+                ps.setObject(6,news.getPublishDate());
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }else {
+            String sql = "insert into news(id, title, content, author, publish_time) values(?,?,?,?,?)";
+            try (Connection conn = DataSourceUtils.getConnection();
+                 PreparedStatement ps = conn.prepareStatement(sql)){
+                ps.setInt(1,news.getId());
+                ps.setString(2,news.getTitle());
+                ps.setString(3,news.getContent());
+                ps.setString(4,news.getAuthor());
+               ps.setObject(5,news.getPublishDate());
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+
     }
     public void deleteNews(int id){
         String sql = "DELETE FROM news where id = ?";

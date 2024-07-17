@@ -76,38 +76,26 @@
 </head>
 <body>
 <div class="container">
-    <h3>添加新闻</h3>
-    <form action="nefu/addnews" method="post">
+    <h3>添加公告</h3>
+    <form action="nefu/addnotice" method="post">
         <div class="form-group">
-            <label for="newsid">新闻号:</label>
-            <input type="text" id="newsid" name="newsId" required>
+            <label for="noticeid">公告号:</label>
+            <input type="text" id="noticeid" name="noticeId" required>
         </div>
         <div class="form-group">
-            <label for="title">新闻标题:</label>
+            <label for="title">公告标题:</label>
             <input type="text" id="title" name="title" required>
         </div>
         <div class="form-group">
-            <label for="author">作者:</label>
-            <input type="text" id="author" name="author" required>
-        </div>
-        <div class="form-group">
-            <label for="content">新闻内容:</label>
+            <label for="content">公告内容:</label>
             <textarea id="content" name="content" rows="5" required></textarea>
-        </div>
-        <div class="form-group">
-            <label for="image">图片上传:</label>
-            <input type="file" id="image" name="image">
-        </div>
-        <div class="form-group">
-            <label for="url">图片地址:</label>
-            <input type="text" id="url" name="url">
         </div>
         <div class="form-group">
             <label for="time">发布时间:</label>
             <input type="date" id="time" name="time">
         </div>
         <div class="form-group">
-            <button type="submit" class="btn">提交新闻</button>
+            <button type="submit" class="btn">提交公告</button>
         </div>
     </form>
 </div>

@@ -13,145 +13,6 @@
             margin: 0;
             box-sizing: border-box;
         }
-
-        .header {
-            /*border: 1px solid red;*/
-            width: 100%;
-            background-color: darkcyan;
-            /*overflow: hidden;*/
-            position: relative;
-            z-index: 1;
-            display: flex;
-            height: 70px;
-        }
-        .header img {
-            /*border: 1px solid red;*/
-            width: 6%;
-            height: 100%;
-            /*height: 66.84px;*/
-            color:  darkcyan;
-            /*display: flex;*/
-            /*filter: hue-rotate(120deg);*/
-        }
-        .header .top {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            flex-direction: row;
-            /*flex-wrap: wrap;*/
-            /*position: absolute;*/
-            /*top:12px;*/
-            /*left: 100px;*/
-        }
-        .top li:not(.search){
-            padding: 10px;
-            /*margin: auto;*/
-            color: white;
-            font-size: 1.2em;
-            margin-top: 10px;
-            position: relative;
-            white-space: nowrap;
-            flex-shrink: 1;
-        }
-
-        .top li:not(.search):hover {
-            background-color: cornflowerblue;
-            color: #f08c00;
-        }
-        .drop {
-            display: none;
-            /*display: flex;*/
-            list-style: none;
-            z-index: 10;
-            position: absolute;
-            flex-direction: column;
-            color: #f08c00;
-            top: 100%;
-            left: 0;
-            background-color: royalblue;
-            white-space: nowrap;
-            min-width: 150px;
-        }
-        .nav-home a{
-            color: white;
-            font-size: 1.1em;
-        }
-        .drop a:hover {
-            color: #ffec99;
-        }
-        li a {
-            display: block;
-            text-decoration: none;
-            font-size: 0.7em;
-        }
-        /*.dropdown {*/
-        /*    position: relative;*/
-        /*}*/
-        .dropdown:hover .drop{
-            display: block;
-            color: #f08c00;
-        }
-        .header .search {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 450px;
-            /*height: 40px; */
-            margin: 20px auto;
-            /*padding: 10px;*/
-            /*margin: auto;*/
-        }
-
-        .search input {
-            border-radius: 15px;
-            width: 100%;
-            height: 30px;
-            background-color: white;
-            border: 1px solid cornflowerblue;
-            outline: none;
-            padding: 0 30px 0 15px; /* 留出空间给搜索图标和右边的搜索按钮 */
-            /*box-sizing: border-box; !* 边框计算在宽度内 *!*/
-        }
-
-        .search input::placeholder {
-            font-size: 14px;
-            color: #999;
-        }
-
-        .searchImg {
-            width: 10px;
-            height: 15px;
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            z-index: 2;
-            transform: translateY(-50%); /* 垂直居中 */
-        }
-
-        .top-right {
-            margin-left: 100px;
-            /*margin-top: 15px;*/
-            outline: none;
-            border: none;
-            padding: 5px;
-            display: flex;
-            justify-content: flex-end; /* 将按钮排列到容器的右侧 */
-            align-items: center;
-            /*margin-top: 15px;*/
-            text-align: center;
-            /*margin-right: 10px;*/
-        }
-        .top-right a {
-            width: 75px;
-            height: 30px;
-            border-radius: 10px;
-            background-color: palevioletred;
-            display: inline-block;
-            padding: 3px;
-            text-align: center;
-            margin: 10px;
-            text-decoration: none;
-        }
         .content h2 {
             text-align: center;
             margin-top: 20px;
@@ -163,6 +24,15 @@
             border-collapse: collapse;
             background-color: #daaf5d;
 
+        }
+        .hidden {
+            display: none;
+        }
+        #searchInput {
+            width: 200px;
+            height: 30px;
+            margin-left: 60px;
+            border-radius: 10px;
         }
         table th ,table td {
             padding: 10px;
@@ -176,7 +46,11 @@
         tbody tr:nth-child(even) {
             background-color: #545491;
         }
-
+        .content p {
+            color: #e0a800;
+            margin-left: 60px;
+            margin-top: 30px;
+        }
         .footer {
             background-color: darkcyan;
             color: white;
@@ -187,73 +61,23 @@
         }
         .col-md-6 {width: 50%;}
         .col-md-12 {width: 100%;}
-        @media (max-width: 700px) {
-            .top-right  {
-                display: none;
-            }
-
-        }
-
-        @media (max-width: 880px) {
-            .search {
-                display: none;
-            }
-
-        }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="header">
-        <img src="img/04.jpg" title="校徽" alt="未成功加载">
-        <ul class="top">
-            <li class="nav-home dropdown"><a href="nefu">首页</a></li>
-            <li class="nav-major dropdown">专业介绍
-                <ul class="major drop">
-                    <li><a href="nefu/major">专业简介</a></li>
-                    <li><a href="nefu/direction">方向简介</a></li>
-                    <li><a href="nefu/grade">分数线</a></li>
-                </ul>
-            </li>
-            <li class="nav-lab  dropdown">实验室介绍
-                <ul class="lab drop">
-                    <li><a href="nefu/lab?id=921">921实验室</a></li>
-                    <li><a href="nefu/lab?id=923">923创新实验室</a></li>
-                    <li><a href="nefu/lab?id=925">925移动开发实验室</a></li>
-                </ul>
-            </li>
-            <li class="nav-teacher  dropdown">教师队伍
-                <ul class="teacher drop">
-                    <li><a href="nefu/listteachers?title=PROFESSOR">教授</a></li>
-                    <li><a href="nefu/listteachers?title=ASSPRO">副教授</a></li>
-                    <li><a href="nefu/listteachers?title=LECTURE">讲师</a></li>
-                </ul>
-            </li>
-            <li class="nav-work  dropdown">就业指南
-                <ul class="work drop">
-                    <li><a href="nefu/work">就业方向</a></li>
-                    <li><a href="nefu/money">薪资待遇</a></li>
-                </ul>
-            </li>
-        </ul>
-        <div class="search">
-            <input type="text" placeholder="请输入关键词">
-            <img class="searchImg" src="img/search.png" alt="">
-        </div>
-        <div class="top-right">
-            <a href="nefu/login">切换账号</a>
-            <a href="nefu/register">注册</a>
-        </div>
-
+    <div id="header">
+        <%@include file="/WEB-INF/keshe/header.jsp"%>
     </div>
     <div class="content">
         <h2>分数线</h2>
-        <table>
+        <input type="text" id="searchInput" placeholder="搜索专业名称或分数">
+        <p>小提示：点击标题即可排序</p>
+        <table id="professionalsTable">
             <thead>
             <tr>
-                <th>专业名称</th>
-                <th>最低分/最低位次</th>
-                <th>选科要求</th>
+                <th onclick="sortTable(0)">专业名称</th>
+                <th onclick="sortTable(1)">最低分/最低位次</th>
+                <th onclick="sortTable(2)">选科要求</th>
             </tr>
             </thead>
             <tbody>
@@ -285,5 +109,76 @@
         <p>&copy; 2024 东北林业大学 All Rights Reserved.</p>
     </div>
 </div>
+<script>
+    function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("professionalsTable");
+        switching = true;
+        dir = "asc";
+        while (switching) {
+            switching = false;
+            rows = table.rows;
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i + 1].getElementsByTagName("TD")[n];
+                if (dir == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                switchcount ++;
+            } else {
+                if (switchcount == 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+
+    // 搜索功能
+    function searchTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("professionalsTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 1; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td");
+            if (td.length > 0) {
+                var found = false;
+                for (var j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+                if (found) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    // 搜索框输入时触发搜索
+    document.getElementById("searchInput").addEventListener("keyup", searchTable);
+</script>
 </body>
 </html>

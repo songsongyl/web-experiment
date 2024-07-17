@@ -75,6 +75,7 @@
     </style>
 </head>
 <body>
+
 <div class="container">
     <h3>添加新闻</h3>
     <form action="nefu/addnews" method="post">

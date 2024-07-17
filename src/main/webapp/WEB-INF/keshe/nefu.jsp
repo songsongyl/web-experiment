@@ -76,7 +76,7 @@
             left: 0;
             background-color: royalblue;
             white-space: nowrap;
-            min-width: 150px;
+            min-width: 100px;
         }
         .nav-home a{
            color: white;
@@ -93,10 +93,10 @@
         /*.dropdown {*/
         /*    position: relative;*/
         /*}*/
-        .dropdown:hover .drop{
-            display: block;
-            color: #f08c00;
-        }
+        /*.dropdown:hover .drop{*/
+        /*    display: block;*/
+        /*    color: #f08c00;*/
+        /*}*/
         .header .search {
             position: relative;
             z-index: 1;
@@ -442,7 +442,12 @@
             },1000)
         })
 
-
+        $(".dropdown").hover(function (){
+            $(this).children(".drop").stop(true, true).slideDown(500)
+            $(".dropdown").not(this).children(".drop").stop(true, true).slideUp(500)
+        },function (){
+            $(this).children(".drop").stop(true, true).slideUp(500)
+        })
     })
 </script>
 </body>

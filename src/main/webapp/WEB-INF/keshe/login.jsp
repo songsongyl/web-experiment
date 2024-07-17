@@ -109,7 +109,7 @@
 <body>
 <div id="login">
     <img src="img/01.jpg" alt="">
-    <form method="post" action="/web_experiment_war_exploded/nefu/login">
+    <form method="post" action="nefu/login">
         <label>身份：
         <select name="identity">
 <%--            <option value=""></option>--%>
